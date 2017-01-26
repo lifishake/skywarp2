@@ -7,7 +7,7 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @subpackage SkyWarp2
  * @since 1.0
  * @version 1.0
  */
@@ -29,7 +29,7 @@
 								'menu_class'     => 'social-links-menu',
 								'depth'          => 1,
 								'link_before'    => '<span class="screen-reader-text">',
-								'link_after'     => '</span>' . twentyseventeen_get_svg( array( 'icon' => 'chain' ) ),
+								'link_after'     => '</span>' . sw2_get_svg( array( 'icon' => 'chain' ) ),
 							) );
 						?>
 					</nav><!-- .social-navigation -->

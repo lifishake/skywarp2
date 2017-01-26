@@ -3,7 +3,7 @@
  * Twenty Seventeen: Color Patterns
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @subpackage SkyWarp2
  * @since 1.0
  */
 

@@ -1,13 +1,12 @@
 <?php
 /**
- * The header for our theme
+ * 头
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @subpackage SkyWarp2
  * @since 1.0
  * @version 1.0
  */
@@ -24,7 +23,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyseventeen' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php echo( 'Skip to content' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
 
@@ -39,15 +38,6 @@
 		<?php endif; ?>
 
 	</header><!-- #masthead -->
-
-	<?php
-	// If a regular post or page, and not the front page, show the featured image.
-	if ( has_post_thumbnail() && ( is_single() || ( is_page() && ! twentyseventeen_is_frontpage() ) ) ) :
-		echo '<div class="single-featured-image-header">';
-		the_post_thumbnail( 'twentyseventeen-featured-image' );
-		echo '</div><!-- .single-featured-image-header -->';
-	endif;
-	?>
 
 	<div class="site-content-contain">
 		<div id="content" class="site-content">

@@ -3,7 +3,7 @@
  * SVG icons related functions and filters
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @subpackage SkyWarp2
  * @since 1.0
  */
 
@@ -33,15 +33,15 @@ add_action( 'wp_footer', 'twentyseventeen_include_svg_icons', 9999 );
  * }
  * @return string SVG markup.
  */
-function twentyseventeen_get_svg( $args = array() ) {
+function sw2_get_svg( $args = array() ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return __( 'Please define default parameters in the form of an array.', 'twentyseventeen' );
+		return '必须返回数组.';
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return __( 'Please define an SVG icon filename.', 'twentyseventeen' );
+		return '缺少SVG图标文件名.';
 	}
 
 	// Set defaults.
@@ -66,9 +66,9 @@ function twentyseventeen_get_svg( $args = array() ) {
 	 *
 	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
 	 *
-	 * Example 1 with title: <?php echo twentyseventeen_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
+	 * Example 1 with title: <?php echo sw2_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
 	 *
-	 * Example 2 with title and description: <?php echo twentyseventeen_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
+	 * Example 2 with title and description: <?php echo sw2_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
 	 *
 	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
 	 */
@@ -131,7 +131,7 @@ function twentyseventeen_nav_menu_social_icons( $item_output, $item, $depth, $ar
 	if ( 'social' === $args->theme_location ) {
 		foreach ( $social_icons as $attr => $value ) {
 			if ( false !== strpos( $item_output, $attr ) ) {
-				$item_output = str_replace( $args->link_after, '</span>' . twentyseventeen_get_svg( array( 'icon' => esc_attr( $value ) ) ), $item_output );
+				$item_output = str_replace( $args->link_after, '</span>' . sw2_get_svg( array( 'icon' => esc_attr( $value ) ) ), $item_output );
 			}
 		}
 	}
@@ -153,7 +153,7 @@ function twentyseventeen_dropdown_icon_to_menu_link( $title, $item, $args, $dept
 	if ( 'top' === $args->theme_location ) {
 		foreach ( $item->classes as $value ) {
 			if ( 'menu-item-has-children' === $value || 'page_item_has_children' === $value ) {
-				$title = $title . twentyseventeen_get_svg( array( 'icon' => 'angle-down' ) );
+				$title = $title . sw2_get_svg( array( 'icon' => 'angle-down' ) );
 			}
 		}
 	}

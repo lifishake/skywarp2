@@ -1,9 +1,9 @@
 <?php
 /**
- * Displays header site branding
+ * 显示头标记
  *
  * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @subpackage SkyWarp2
  * @since 1.0
  * @version 1.0
  */
@@ -27,8 +27,8 @@
 				<?php endif; ?>
 		</div><!-- .site-branding-text -->
 
-		<?php if ( ( twentyseventeen_is_frontpage() || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) : ?>
-		<a href="#content" class="menu-scroll-down"><?php echo twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ); ?><span class="screen-reader-text"><?php _e( 'Scroll down to content', 'twentyseventeen' ); ?></span></a>
+		<?php if ( ( sw2_is_frontpage() || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) : ?>
+		<a href="#content" class="menu-scroll-down"><?php echo sw2_get_svg( array( 'icon' => 'arrow-right' ) ); ?><span class="screen-reader-text"><?php echo( '跳至正文' ); ?></span></a>
 	<?php endif; ?>
 
 	</div><!-- .wrap -->
