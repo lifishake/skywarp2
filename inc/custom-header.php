@@ -46,7 +46,7 @@ function sw2_custom_header_setup() {
 		'default-image' => array(
 			'url'           => '%s/assets/images/header.jpg',
 			'thumbnail_url' => '%s/assets/images/header.jpg',
-			'description'   => __( 'Default Header Image', 'twentyseventeen' ),
+			'description'   => 'Default Header Image',
 		),
 	) );
 }
@@ -108,13 +108,3 @@ function sw2_header_style() {
 	<?php
 }
 endif; // End of sw2_header_style.
-
-/**
- * Customize video play/pause button in the custom header.
- */
-function twentyseventeen_video_controls( $settings ) {
-	$settings['l10n']['play'] = '<span class="screen-reader-text">' . __( 'Play background video', 'twentyseventeen' ) . '</span>' . sw2_get_svg( array( 'icon' => 'play' ) );
-	$settings['l10n']['pause'] = '<span class="screen-reader-text">' . __( 'Pause background video', 'twentyseventeen' ) . '</span>' . sw2_get_svg( array( 'icon' => 'pause' ) );
-	return $settings;
-}
-add_filter( 'header_video_settings', 'twentyseventeen_video_controls' );

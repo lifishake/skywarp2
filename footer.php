@@ -22,7 +22,7 @@
 				get_template_part( 'template-parts/footer/footer', 'widgets' );
 
 				if ( has_nav_menu( 'social' ) ) : ?>
-					<nav class="social-navigation" role="navigation" aria-label="<?php _e( 'Footer Social Links Menu', 'twentyseventeen' ); ?>">
+					<nav class="social-navigation" role="navigation" aria-label="<?php echo( '社会化链接' ); ?>">
 						<?php
 							wp_nav_menu( array(
 								'theme_location' => 'social',

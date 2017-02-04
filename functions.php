@@ -17,13 +17,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	return;
 }
 
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
 function skywarp2_setup() {
 	/*
 	 * Make theme available for translation.
@@ -36,12 +29,6 @@ function skywarp2_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
 	add_theme_support( 'title-tag' );
 
 	/*
@@ -97,91 +84,6 @@ function skywarp2_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	add_theme_support( 'starter-content', array(
-		'widgets' => array(
-			'sidebar-1' => array(
-				'text_business_info',
-				'search',
-				'text_about',
-			),
-
-			'sidebar-2' => array(
-				'text_business_info',
-			),
-
-			'sidebar-3' => array(
-				'text_about',
-				'search',
-			),
-		),
-
-		'posts' => array(
-			'home',
-			'about' => array(
-				'thumbnail' => '{{image-sandwich}}',
-			),
-			'contact' => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-			'blog' => array(
-				'thumbnail' => '{{image-coffee}}',
-			),
-			'homepage-section' => array(
-				'thumbnail' => '{{image-espresso}}',
-			),
-		),
-
-		'attachments' => array(
-			'image-espresso' => array(
-				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/espresso.jpg',
-			),
-			'image-sandwich' => array(
-				'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/sandwich.jpg',
-			),
-			'image-coffee' => array(
-				'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/coffee.jpg',
-			),
-		),
-
-		'options' => array(
-			'show_on_front' => 'page',
-			'page_on_front' => '{{home}}',
-			'page_for_posts' => '{{blog}}',
-		),
-
-		'theme_mods' => array(
-			'panel_1' => '{{homepage-section}}',
-			'panel_2' => '{{about}}',
-			'panel_3' => '{{blog}}',
-			'panel_4' => '{{contact}}',
-		),
-
-		'nav_menus' => array(
-			'top' => array(
-				'name' => __( 'Top Menu', 'twentyseventeen' ),
-				'items' => array(
-					'page_home',
-					'page_about',
-					'page_blog',
-					'page_contact',
-				),
-			),
-			'social' => array(
-				'name' => __( 'Social Links Menu', 'twentyseventeen' ),
-				'items' => array(
-					'link_yelp',
-					'link_facebook',
-					'link_twitter',
-					'link_instagram',
-					'link_email',
-				),
-			),
-		),
-	) );
 }
 add_action( 'after_setup_theme', 'skywarp2_setup' );
 
@@ -192,7 +94,7 @@ add_action( 'after_setup_theme', 'skywarp2_setup' );
  *
  * @global int $content_width
  */
-function twentyseventeen_content_width() {
+function sw2_content_width() {
 
 	$content_width = 700;
 
@@ -200,16 +102,9 @@ function twentyseventeen_content_width() {
 		$content_width = 1120;
 	}
 
-	/**
-	 * Filter Twenty Seventeen content width of the theme.
-	 *
-	 * @since Twenty Seventeen 1.0
-	 *
-	 * @param $content_width integer
-	 */
-	$GLOBALS['content_width'] = apply_filters( 'twentyseventeen_content_width', $content_width );
+	$GLOBALS['content_width'] =  $content_width ;
 }
-add_action( 'after_setup_theme', 'twentyseventeen_content_width', 0 );
+add_action( 'after_setup_theme', 'sw2_content_width', 0 );
 
 /**
  * Add preconnect for Google Fonts.
@@ -239,9 +134,9 @@ add_filter( 'wp_resource_hints', 'twentyseventeen_resource_hints', 10, 2 );
  */
 function twentyseventeen_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'twentyseventeen' ),
+		'name'          => 'Sidebar',
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentyseventeen' ),
+		'description'   => 'Add widgets here to appear in your sidebar.',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -249,9 +144,9 @@ function twentyseventeen_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'twentyseventeen' ),
+		'name'          => 'Footer 1',
 		'id'            => 'sidebar-2',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
+		'description'   => 'Add widgets here to appear in your footer.',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -259,9 +154,9 @@ function twentyseventeen_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'twentyseventeen' ),
+		'name'          => 'Footer 2',
 		'id'            => 'sidebar-3',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
+		'description'   => 'Add widgets here to appear in your footer.',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -269,28 +164,6 @@ function twentyseventeen_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'twentyseventeen_widgets_init' );
-
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with ... and
- * a 'Continue reading' link.
- *
- * @since Twenty Seventeen 1.0
- *
- * @return string 'Continue reading' link prepended with an ellipsis.
- */
-function twentyseventeen_excerpt_more( $link ) {
-	if ( is_admin() ) {
-		return $link;
-	}
-
-	$link = sprintf( '<p class="link-more"><a href="%1$s" class="more-link">%2$s</a></p>',
-		esc_url( get_permalink( get_the_ID() ) ),
-		/* translators: %s: Name of current post */
-		sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ), get_the_title( get_the_ID() ) )
-	);
-	return ' &hellip; ' . $link;
-}
-add_filter( 'excerpt_more', 'twentyseventeen_excerpt_more' );
 
 /**
  * Handles JavaScript detection.
@@ -317,19 +190,16 @@ add_action( 'wp_head', 'twentyseventeen_pingback_header' );
 /**
  * Display custom color CSS.
  */
-function twentyseventeen_colors_css_wrap() {
-	if ( 'custom' !== get_theme_mod( 'colorscheme' ) && ! is_customize_preview() ) {
-		return;
-	}
+function sw2_colors_css_wrap() {
 
 	require_once( get_parent_theme_file_path( '/inc/color-patterns.php' ) );
 	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 ?>
 	<style type="text/css" id="custom-theme-colors" <?php if ( is_customize_preview() ) { echo 'data-hue="' . $hue . '"'; } ?>>
-		<?php echo twentyseventeen_custom_colors_css(); ?>
+		<?php echo sw2_custom_colors_css(); ?>
 	</style>
 <?php }
-add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
+add_action( 'wp_head', 'sw2_colors_css_wrap' );
 
 /**
  * Enqueue scripts and styles.
@@ -338,11 +208,6 @@ function sw2_scripts() {
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'sw2-style', get_stylesheet_uri() );
-
-	// Load the dark colorscheme.
-	if ( 'dark' === get_theme_mod( 'colorscheme', 'dark' ) || is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'sw2-style' ), '1.0' );
-	}
 
 	// Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
 	if ( is_customize_preview() ) {
@@ -366,8 +231,8 @@ function sw2_scripts() {
 
 	if ( has_nav_menu( 'top' ) ) {
 		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
-		$twentyseventeen_l10n['expand']         = __( 'Expand child menu', 'twentyseventeen' );
-		$twentyseventeen_l10n['collapse']       = __( 'Collapse child menu', 'twentyseventeen' );
+		$twentyseventeen_l10n['expand']         = 'Expand child menu';
+		$twentyseventeen_l10n['collapse']       = 'Collapse child menu';
 		$twentyseventeen_l10n['icon']           = sw2_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
 	}
 

@@ -71,28 +71,26 @@ function twentyseventeen_entry_footer() {
 	$tags_list = get_the_tag_list( '', $separate_meta );
 
 	// We don't want to output .entry-footer if it will be empty, so make sure its not.
-	if ( ( ( twentyseventeen_categorized_blog() && $categories_list ) || $tags_list ) || get_edit_post_link() ) {
+	if ( ( $categories_list || $tags_list ) || get_edit_post_link() ) {
 
 		echo '<footer class="entry-footer">';
 
 			if ( 'post' === get_post_type() ) {
-				if ( ( $categories_list && twentyseventeen_categorized_blog() ) || $tags_list ) {
-					echo '<span class="cat-tags-links">';
+				echo '<span class="cat-tags-links">';
 
-						// Make sure there's more than one category before displaying.
-						if ( $categories_list && twentyseventeen_categorized_blog() ) {
-							echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . '<span class="screen-reader-text">' . __( 'Categories', 'twentyseventeen' ) . '</span>' . $categories_list . '</span>';
-						}
+					// Make sure there's more than one category before displaying.
+					if ( $categories_list ) {
+						echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . '<span class="screen-reader-text">Categories</span>' . $categories_list . '</span>';
+					}
 
-						if ( $tags_list ) {
-							echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . '<span class="screen-reader-text">' . __( 'Tags', 'twentyseventeen' ) . '</span>' . $tags_list . '</span>';
-						}
+					if ( $tags_list ) {
+						echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . '<span class="screen-reader-text">' . __( 'Tags', 'twentyseventeen' ) . '</span>' . $tags_list . '</span>';
+					}
 
-					echo '</span>';
-				}
+				echo '</span>';
 			}
 
-			twentyseventeen_edit_link();
+			sw2_edit_link();
 
 		echo '</footer> <!-- .entry-footer -->';
 	}
@@ -100,7 +98,7 @@ function twentyseventeen_entry_footer() {
 endif;
 
 
-if ( ! function_exists( 'twentyseventeen_edit_link' ) ) :
+if ( ! function_exists( 'sw2_edit_link' ) ) :
 /**
  * Returns an accessibility-friendly link to edit a post or page.
  *
@@ -109,14 +107,10 @@ if ( ! function_exists( 'twentyseventeen_edit_link' ) ) :
  * of the template hierarchy and their content. Helpful when/if the single-page
  * layout with multiple posts/pages shown gets confusing.
  */
-function twentyseventeen_edit_link() {
+function sw2_edit_link() {
 
 	$link = edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-			get_the_title()
-		),
+		'编辑',
 		'<span class="edit-link">',
 		'</span>'
 	);
@@ -124,73 +118,3 @@ function twentyseventeen_edit_link() {
 	return $link;
 }
 endif;
-
-/**
- * Display a front page section.
- *
- * @param $partial WP_Customize_Partial Partial associated with a selective refresh request.
- * @param $id integer Front page section to display.
- */
-function twentyseventeen_front_page_section( $partial = null, $id = 0 ) {
-	if ( is_a( $partial, 'WP_Customize_Partial' ) ) {
-		// Find out the id and set it up during a selective refresh.
-		global $twentyseventeencounter;
-		$id = str_replace( 'panel_', '', $partial->id );
-		$twentyseventeencounter = $id;
-	}
-
-	global $post; // Modify the global post object before setting up post data.
-	if ( get_theme_mod( 'panel_' . $id ) ) {
-		global $post;
-		$post = get_post( get_theme_mod( 'panel_' . $id ) );
-		setup_postdata( $post );
-		set_query_var( 'panel', $id );
-
-		get_template_part( 'template-parts/page/content', 'front-page-panels' );
-
-		wp_reset_postdata();
-	} elseif ( is_customize_preview() ) {
-		// The output placeholder anchor.
-		echo '<article class="panel-placeholder panel twentyseventeen-panel twentyseventeen-panel' . $id . '" id="panel' . $id . '"><span class="twentyseventeen-panel-title">' . sprintf( __( 'Front Page Section %1$s Placeholder', 'twentyseventeen' ), $id ) . '</span></article>';
-	}
-}
-
-/**
- * Returns true if a blog has more than 1 category.
- *
- * @return bool
- */
-function twentyseventeen_categorized_blog() {
-	$category_count = get_transient( 'twentyseventeen_categories' );
-
-	if ( false === $category_count ) {
-		// Create an array of all the categories that are attached to posts.
-		$categories = get_categories( array(
-			'fields'     => 'ids',
-			'hide_empty' => 1,
-			// We only need to know if there is more than one category.
-			'number'     => 2,
-		) );
-
-		// Count the number of categories that are attached to the posts.
-		$category_count = count( $categories );
-
-		set_transient( 'twentyseventeen_categories', $category_count );
-	}
-
-	return $category_count > 1;
-}
-
-
-/**
- * Flush out the transients used in twentyseventeen_categorized_blog.
- */
-function twentyseventeen_category_transient_flusher() {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-	// Like, beat it. Dig?
-	delete_transient( 'twentyseventeen_categories' );
-}
-add_action( 'edit_category', 'twentyseventeen_category_transient_flusher' );
-add_action( 'save_post',     'twentyseventeen_category_transient_flusher' );

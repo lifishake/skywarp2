@@ -42,9 +42,9 @@ get_header(); ?>
 			endwhile;
 
 			the_posts_pagination( array(
-				'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-				'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+				'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">前一页</span>',
+				'next_text' => '<span class="screen-reader-text">后一页</span>' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">页</span>',
 			) );
 
 		else :

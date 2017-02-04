@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function twentyseventeen_body_classes( $classes ) {
+function sw2_body_classes( $classes ) {
 	// Add class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -59,12 +59,11 @@ function twentyseventeen_body_classes( $classes ) {
 	}
 
 	// Get the colorscheme or the default if there isn't one.
-	$colors = sw2_sanitize_colorscheme( get_theme_mod( 'colorscheme', 'light' ) );
-	$classes[] = 'colors-' . $colors;
+	$classes[] = 'colors-custom';
 
 	return $classes;
 }
-add_filter( 'body_class', 'twentyseventeen_body_classes' );
+add_filter( 'body_class', 'sw2_body_classes' );
 
 /**
  * Count our number of active panels.

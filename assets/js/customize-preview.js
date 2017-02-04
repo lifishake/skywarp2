@@ -14,18 +14,6 @@
 
 	});
 
-	// Site title and description.
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
-		});
-	});
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
-		});
-	});
-
 	// Header text color.
 	wp.customize( 'header_textcolor', function( value ) {
 		value.bind( function( to ) {
@@ -52,17 +40,6 @@
 				// Add class for different logo styles if title and description are visible.
 				$( 'body' ).removeClass( 'title-tagline-hidden' );
 			}
-		});
-	});
-
-	// Color scheme.
-	wp.customize( 'colorscheme', function( value ) {
-		value.bind( function( to ) {
-
-			// Update color body class.
-			$( 'body' )
-				.removeClass( 'colors-light colors-dark colors-custom' )
-				.addClass( 'colors-' + to );
 		});
 	});
 

@@ -16,9 +16,9 @@ get_header(); ?>
 
 	<header class="page-header">
 		<?php if ( have_posts() ) : ?>
-			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyseventeen' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<h1 class="page-title"><?php printf( '关键字『%s』的搜索结果：', '<span>' . get_search_query() . '</span>' ); ?></h1>
 		<?php else : ?>
-			<h1 class="page-title"><?php _e( 'Nothing Found', 'twentyseventeen' ); ?></h1>
+			<h1 class="page-title"><?php echo( '一无所获。' ); ?></h1>
 		<?php endif; ?>
 	</header><!-- .page-header -->
 
@@ -40,14 +40,14 @@ get_header(); ?>
 			endwhile; // End of the loop.
 
 			the_posts_pagination( array(
-				'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-				'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
+				'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">前一页</span>',
+				'next_text' => '<span class="screen-reader-text">后一页</span>' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">页</span>',
 			) );
 
 		else : ?>
 
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>
+			<p><?php echo( '没找到你想要的。换个关键字试试吧！' ); ?></p>
 			<?php
 				get_search_form();
 
