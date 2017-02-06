@@ -9,8 +9,8 @@
  */
 
 ?>
-<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php echo( 'Top Menu' ); ?>">
-	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php echo sw2_get_svg( array( 'icon' => 'bars' ) ); echo sw2_get_svg( array( 'icon' => 'close' ) ); echo( 'Menu' ); ?></button>
+<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Top Menu">
+	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php echo sw2_get_svg( array( 'icon' => 'bars' ) ); echo sw2_get_svg( array( 'icon' => 'close' ) ); ?></button>
 	<?php wp_nav_menu( array(
 		'theme_location' => 'top',
 		'menu_id'        => 'top-menu',

@@ -18,13 +18,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 }
 
 function skywarp2_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentyseventeen
-	 * If you're building a theme based on Twenty Seventeen, use a find and replace
-	 * to change 'twentyseventeen' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'twentyseventeen' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -42,7 +35,7 @@ function skywarp2_setup() {
 
 	add_image_size( 'skywarp2-featured-image', 800, 480, true );
 
-	add_image_size( 'twentyseventeen-thumbnail-avatar', 100, 100, true );
+	add_image_size( 'skywarp2-thumbnail-avatar', 100, 100, true );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
@@ -106,37 +99,11 @@ function sw2_content_width() {
 }
 add_action( 'after_setup_theme', 'sw2_content_width', 0 );
 
-/**
- * Add preconnect for Google Fonts.
- *
- * @since Twenty Seventeen 1.0
- *
- * @param array  $urls           URLs to print for resource hints.
- * @param string $relation_type  The relation type the URLs are printed.
- * @return array $urls           URLs to print for resource hints.
- */
-function twentyseventeen_resource_hints( $urls, $relation_type ) {
-	if ( wp_style_is( 'twentyseventeen-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
-		$urls[] = array(
-			'href' => 'https://fonts.gstatic.com',
-			'crossorigin',
-		);
-	}
-
-	return $urls;
-}
-add_filter( 'wp_resource_hints', 'twentyseventeen_resource_hints', 10, 2 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function twentyseventeen_widgets_init() {
+function skywarp2_widgets_init() {
 	register_sidebar( array(
 		'name'          => 'Sidebar',
 		'id'            => 'sidebar-1',
-		'description'   => 'Add widgets here to appear in your sidebar.',
+		'description'   => '添加侧边栏小工具',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -146,7 +113,7 @@ function twentyseventeen_widgets_init() {
 	register_sidebar( array(
 		'name'          => 'Footer 1',
 		'id'            => 'sidebar-2',
-		'description'   => 'Add widgets here to appear in your footer.',
+		'description'   => '添加左侧页脚小工具',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -156,36 +123,19 @@ function twentyseventeen_widgets_init() {
 	register_sidebar( array(
 		'name'          => 'Footer 2',
 		'id'            => 'sidebar-3',
-		'description'   => 'Add widgets here to appear in your footer.',
+		'description'   => '添加右侧页脚小工具',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'twentyseventeen_widgets_init' );
+add_action( 'widgets_init', 'skywarp2_widgets_init' );
 
-/**
- * Handles JavaScript detection.
- *
- * Adds a `js` class to the root `<html>` element when JavaScript is detected.
- *
- * @since Twenty Seventeen 1.0
- */
-function twentyseventeen_javascript_detection() {
+function skywarp2_javascript_detection() {
 	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }
-add_action( 'wp_head', 'twentyseventeen_javascript_detection', 0 );
-
-/**
- * Add a pingback url auto-discovery header for singularly identifiable articles.
- */
-function twentyseventeen_pingback_header() {
-	if ( is_singular() && pings_open() ) {
-		printf( '<link rel="pingback" href="%s">' . "\n", get_bloginfo( 'pingback_url' ) );
-	}
-}
-add_action( 'wp_head', 'twentyseventeen_pingback_header' );
+add_action( 'wp_head', 'skywarp2_javascript_detection', 0 );
 
 /**
  * Display custom color CSS.
@@ -211,36 +161,36 @@ function sw2_scripts() {
 
 	// Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
 	if ( is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'sw2-style' ), '1.0' );
-		wp_style_add_data( 'twentyseventeen-ie9', 'conditional', 'IE 9' );
+		wp_enqueue_style( 'sw2-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'sw2-style' ), '1.0' );
+		wp_style_add_data( 'sw2-ie9', 'conditional', 'IE 9' );
 	}
 
 	// Load the Internet Explorer 8 specific stylesheet.
-	wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'sw2-style' ), '1.0' );
-	wp_style_add_data( 'twentyseventeen-ie8', 'conditional', 'lt IE 9' );
+	wp_enqueue_style( 'sw2-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'sw2-style' ), '1.0' );
+	wp_style_add_data( 'sw2-ie8', 'conditional', 'lt IE 9' );
 
 	// Load the html5 shiv.
 	wp_enqueue_script( 'html5', get_theme_file_uri( '/assets/js/html5.js' ), array(), '3.7.3' );
 	wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
 
-	wp_enqueue_script( 'twentyseventeen-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
+	wp_enqueue_script( 'sw2-skip-link-focus-fix', get_theme_file_uri( '/assets/js/skip-link-focus-fix.js' ), array(), '1.0', true );
 
-	$twentyseventeen_l10n = array(
+	$sw2_l10n = array(
 		'quote'          => sw2_get_svg( array( 'icon' => 'quote-right' ) ),
 	);
 
 	if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
-		$twentyseventeen_l10n['expand']         = 'Expand child menu';
-		$twentyseventeen_l10n['collapse']       = 'Collapse child menu';
-		$twentyseventeen_l10n['icon']           = sw2_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
+		wp_enqueue_script( 'sw2-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
+		$sw2_l10n['expand']         = '展开';
+		$sw2_l10n['collapse']       = '折叠';
+		$sw2_l10n['icon']           = sw2_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
 	}
 
-	wp_enqueue_script( 'twentyseventeen-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'sw2-global', get_theme_file_uri( '/assets/js/global.js' ), array( 'jquery' ), '1.0', true );
 
 	wp_enqueue_script( 'jquery-scrollto', get_theme_file_uri( '/assets/js/jquery.scrollTo.js' ), array( 'jquery' ), '2.1.2', true );
 
-	wp_localize_script( 'twentyseventeen-skip-link-focus-fix', 'twentyseventeenScreenReaderText', $twentyseventeen_l10n );
+	wp_localize_script( 'sw2-skip-link-focus-fix', 'sw2ScreenReaderText', $sw2_l10n );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -1,4 +1,4 @@
-/* global twentyseventeenScreenReaderText */
+/* global sw2ScreenReaderText */
 (function( $ ) {
 
 	// Variables and DOM Caching.
@@ -52,36 +52,37 @@
 		navMenuItemHeight     = $navMenuItem.outerHeight() * 2;
 		idealNavHeight        = navPadding + navMenuItemHeight;
 		navIsNotTooTall       = navigationHeight <= idealNavHeight;
+		if ( 'none' !== $menuToggle.css( 'display' ) )
+		{
+			navIsNotTooTall = true;
+			navigationOuterHeight = navigationHeight;
+		}
 	}
 
 	// Make navigation 'stick'.
 	function adjustScrollClass() {
 
-		// Make sure we're not on a mobile screen.
-		if ( 'none' === $menuToggle.css( 'display' ) ) {
+		// Make sure the nav isn't taller than two rows.
+		if ( navIsNotTooTall ) {
 
-			// Make sure the nav isn't taller than two rows.
-			if ( navIsNotTooTall ) {
-
-				// When there's a custom header image or video, the header offset includes the height of the navigation.
-				if ( isFrontPage && ( $body.hasClass( 'has-header-image' ) || $body.hasClass( 'has-header-video' ) ) ) {
-					headerOffset = $customHeader.innerHeight() - navigationOuterHeight;
-				} else {
-					headerOffset = $customHeader.innerHeight();
-				}
-
-				// If the scroll is more than the custom header, set the fixed class.
-				if ( $( window ).scrollTop() >= headerOffset ) {
-					$navigation.addClass( navigationFixedClass );
-				} else {
-					$navigation.removeClass( navigationFixedClass );
-				}
-
+			// When there's a custom header image or video, the header offset includes the height of the navigation.
+			if ( isFrontPage && ( $body.hasClass( 'has-header-image' ) || $body.hasClass( 'has-header-video' ) ) ) {
+				headerOffset = $customHeader.innerHeight() - navigationOuterHeight;
 			} else {
+				headerOffset = $customHeader.innerHeight();
+			}
 
-				// Remove 'fixed' class if nav is taller than two rows.
+			// If the scroll is more than the custom header, set the fixed class.
+			if ( $( window ).scrollTop() >= headerOffset ) {
+				$navigation.addClass( navigationFixedClass );
+			} else {
 				$navigation.removeClass( navigationFixedClass );
 			}
+
+		} else {
+
+			// Remove 'fixed' class if nav is taller than two rows.
+			$navigation.removeClass( navigationFixedClass );
 		}
 	}
 
@@ -104,7 +105,7 @@
 
 	// Set icon for quotes.
 	function setQuotesIcon() {
-		$( twentyseventeenScreenReaderText.quote ).prependTo( $formatQuote );
+		$( sw2ScreenReaderText.quote ).prependTo( $formatQuote );
 	}
 
 	// Add 'below-entry-meta' class to elements.
