@@ -869,8 +869,6 @@ a:active {
 
 .entry-title a,
 .entry-meta a,
-.page-links a,
-.page-links a .page-number,
 .entry-footer a,
 .entry-footer .cat-links a,
 .entry-footer .tags-links a,
@@ -1668,27 +1666,6 @@ body:not(.twentyseventeen-front-page) .entry-header {
 	max-width: 740px;
 }
 
-.page-links {
-	font-size: 14px;
-	font-size: 0.875rem;
-	font-weight: 800;
-	padding: 2em 0 3em;
-}
-
-.page-links .page-number {
-	color: #767676;
-	display: inline-block;
-	padding: 0.5em 1em;
-}
-
-.page-links a {
-	display: inline-block;
-}
-
-.page-links a .page-number {
-	color: #222;
-}
-
 /* Entry footer */
 
 .entry-footer {
@@ -1841,11 +1818,6 @@ body:not(.twentyseventeen-front-page) .entry-header {
 .search .page .entry-header .edit-link {
 	font-size: 11px;
 	font-size: 0.6875rem;
-}
-
-.page-links {
-	clear: both;
-	margin: 0 0 1.5em;
 }
 
 .page:not(.home) #content {
@@ -2350,8 +2322,7 @@ object {
 	max-width: 100%;
 }
 
-.wp-caption,
-.gallery-caption {
+.wp-caption {
 	color: #666;
 	font-size: 13px;
 	font-size: 0.8125rem;
@@ -2385,134 +2356,6 @@ object {
 	border: 0;
 }
 
-/* Playlist Color Overrides: Light */
-
-.site-content .wp-playlist-light {
-	border-color: #eee;
-	color: #222;
-}
-
-.site-content .wp-playlist-light .wp-playlist-current-item .wp-playlist-item-album {
-	color: #333;
-}
-
-.site-content .wp-playlist-light .wp-playlist-current-item .wp-playlist-item-artist {
-	color: #767676;
-}
-
-.site-content .wp-playlist-light .wp-playlist-item {
-	border-bottom: 1px dotted #eee;
-	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-}
-
-.site-content .wp-playlist-light .wp-playlist-item:hover,
-.site-content .wp-playlist-light .wp-playlist-item:focus {
-	border-bottom-color: rgba(0, 0, 0, 0);
-	background-color: #767676;
-	color: #fff;
-}
-
-.site-content .wp-playlist-light a.wp-playlist-caption:hover,
-.site-content .wp-playlist-light .wp-playlist-item:hover a,
-.site-content .wp-playlist-light .wp-playlist-item:focus a {
-	color: #fff;
-}
-
-/* Playlist Color Overrides: Dark */
-
-.site-content .wp-playlist-dark {
-	background: #222;
-	border-color: #333;
-}
-
-.site-content .wp-playlist-dark .mejs-container .mejs-controls {
-	background-color: #333;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-caption {
-	color: #fff;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-current-item .wp-playlist-item-album {
-	color: #eee;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-current-item .wp-playlist-item-artist {
-	color: #aaa;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-playing {
-	background-color: #333;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-item {
-	border-bottom: 1px dotted #555;
-	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-}
-
-.site-content .wp-playlist-dark .wp-playlist-item:hover,
-.site-content .wp-playlist-dark .wp-playlist-item:focus {
-	border-bottom-color: rgba(0, 0, 0, 0);
-	background-color: #aaa;
-	color: #222;
-}
-
-.site-content .wp-playlist-dark a.wp-playlist-caption:hover,
-.site-content .wp-playlist-dark .wp-playlist-item:hover a,
-.site-content .wp-playlist-dark .wp-playlist-item:focus a {
-	color: #222;
-}
-
-/* Playlist Style Overrides */
-
-.site-content .wp-playlist {
-	padding: 0.625em 0.625em 0.3125em;
-}
-
-.site-content .wp-playlist-current-item .wp-playlist-item-title {
-	font-weight: 700;
-}
-
-.site-content .wp-playlist-current-item .wp-playlist-item-album {
-	font-style: normal;
-}
-
-.site-content .wp-playlist-current-item .wp-playlist-item-artist {
-	font-size: 10px;
-	font-size: 0.625rem;
-	font-weight: 800;
-	letter-spacing: 0.1818em;
-	text-transform: uppercase;
-}
-
-.site-content .wp-playlist-item {
-	padding: 0 0.3125em;
-	cursor: pointer;
-}
-
-.site-content .wp-playlist-item:last-of-type {
-	border-bottom: none;
-}
-
-.site-content .wp-playlist-item a {
-	padding: 0.3125em 0;
-	border-bottom: none;
-}
-
-.site-content .wp-playlist-item a,
-.site-content .wp-playlist-item a:focus,
-.site-content .wp-playlist-item a:hover {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	background: transparent;
-}
-
-.site-content .wp-playlist-item-length {
-	top: 5px;
-}
-
 /* SVG Icons base styles */
 
 .icon {
@@ -2523,60 +2366,6 @@ object {
 	top: -0.0625em;
 	vertical-align: middle;
 	width: 1em;
-}
-
-/*--------------------------------------------------------------
-16.1 Galleries
---------------------------------------------------------------*/
-
-.gallery-item {
-	display: inline-block;
-	text-align: left;
-	vertical-align: top;
-	margin: 0 0 1.5em;
-	padding: 0 1em 0 0;
-	width: 50%;
-}
-
-.gallery-columns-1 .gallery-item {
-	width: 100%;
-}
-
-.gallery-columns-2 .gallery-item {
-	max-width: 50%;
-}
-
-.gallery-item a,
-.gallery-item a:hover,
-.gallery-item a:focus {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	background: none;
-	display: inline-block;
-	max-width: 100%;
-}
-
-.gallery-item a img {
-	display: block;
-	-webkit-transition: -webkit-filter 0.2s ease-in;
-	transition: -webkit-filter 0.2s ease-in;
-	transition: filter 0.2s ease-in;
-	transition: filter 0.2s ease-in, -webkit-filter 0.2s ease-in;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.gallery-item a:hover img,
-.gallery-item a:focus img {
-	-webkit-filter: opacity(60%);
-	filter: opacity(60%);
-}
-
-.gallery-caption {
-	display: block;
-	text-align: left;
-	padding: 0 10px 0 0;
-	margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
@@ -2823,27 +2612,6 @@ object {
 		font-size: 1rem;
 	}
 
-	/* Gallery Columns */
-
-	.gallery-item {
-		max-width: 25%;
-	}
-
-	.gallery-columns-1 .gallery-item {
-		max-width: 100%;
-	}
-
-	.gallery-columns-2 .gallery-item {
-		max-width: 50%;
-	}
-
-	.gallery-columns-3 .gallery-item {
-		max-width: 33.33%;
-	}
-
-	.gallery-columns-4 .gallery-item {
-		max-width: 25%;
-	}
 }
 
 @media screen and (min-width: 48em) {
@@ -3564,27 +3332,6 @@ object {
 		width: auto;
 	}
 
-	/* Gallery Columns */
-
-	.gallery-columns-5 .gallery-item {
-		max-width: 20%;
-	}
-
-	.gallery-columns-6 .gallery-item {
-		max-width: 16.66%;
-	}
-
-	.gallery-columns-7 .gallery-item {
-		max-width: 14.28%;
-	}
-
-	.gallery-columns-8 .gallery-item {
-		max-width: 12.5%;
-	}
-
-	.gallery-columns-9 .gallery-item {
-		max-width: 11.11%;
-	}
 }
 
 @media screen and ( min-width: 67em ) {
@@ -3679,7 +3426,6 @@ object {
 	.header-image,
 	.panel-image-prop,
 	.icon-thumb-tack,
-	.page-links,
 	.edit-link,
 	.post-navigation,
 	.pagination.navigation,
@@ -3858,8 +3604,6 @@ object {
 .archive .entry-meta a.post-edit-link:hover,
 .search .entry-meta a.post-edit-link:focus,
 .search .entry-meta a.post-edit-link:hover,
-.page-links a:focus .page-number,
-.page-links a:hover .page-number,
 .entry-footer .cat-links a:focus,
 .entry-footer .cat-links a:hover,
 .entry-footer .tags-links a:focus,
@@ -3913,8 +3657,6 @@ object {
 .archive .entry-meta a.post-edit-link:hover,
 .search .entry-meta a.post-edit-link:focus,
 .search .entry-meta a.post-edit-link:hover,
-.page-links a:focus .page-number,
-.page-links a:hover .page-number,
 .entry-footer .cat-links a:focus,
 .entry-footer .cat-links a:hover,
 .entry-footer .tags-links a:focus,
@@ -4037,7 +3779,6 @@ body,
 .page .panel-content .entry-title,
 .page-title,
 .page:not(.twentyseventeen-front-page) .entry-title,
-.page-links a .page-number,
 .comment-metadata a.comment-edit-link,
 .comment-reply-link .icon,
 .h2.widget-title,
@@ -4094,7 +3835,6 @@ body,
 .no-comments,
 .comment-awaiting-moderation,
 .page-numbers.current,
-.page-links .page-number,
 .site-description {
 	color: #bbb;
 }
@@ -4221,19 +3961,6 @@ body,
 	border-color: #333;
 }
 
-.navigation-top,
-.main-navigation > div > ul,
-.pagination,
-.comment-navigation,
-.entry-footer,
-.site-footer {
-	border-top-color: #333;
-}
-
-.single-featured-image-header,
-.navigation-top,
-.main-navigation li,
-.entry-footer,
 .#comments {
 	border-bottom-color: #333;
 }
@@ -4253,11 +3980,14 @@ body,
 	color: #222;
 }
 
-body,
+body {
+	background: #050505;
+}
+
 .site-content-contain,
 .navigation-top,
 .main-navigation ul {
-	background: #222;
+	background: rgba(5,5,5,.9);
 }
 
 .entry-title a,
@@ -4265,8 +3995,6 @@ body,
 .blog .entry-meta a.post-edit-link,
 .archive .entry-meta a.post-edit-link,
 .search .entry-meta a.post-edit-link,
-.page-links a,
-.page-links a .page-number,
 .entry-footer a,
 .entry-footer .cat-links a,
 .entry-footer .tags-links a,
@@ -4311,9 +4039,6 @@ body,
 	background-color: transparent;
 }
 
-.gallery-item a,
-.gallery-item a:hover,
-.gallery-item a:focus,
 .widget .tagcloud a,
 .widget .tagcloud a:focus,
 .widget .tagcloud a:hover,

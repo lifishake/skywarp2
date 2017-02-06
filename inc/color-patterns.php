@@ -60,8 +60,6 @@ function sw2_custom_colors_css() {
 .colors-custom.archive .entry-meta a.post-edit-link:hover,
 .colors-custom.search .entry-meta a.post-edit-link:focus,
 .colors-custom.search .entry-meta a.post-edit-link:hover,
-.colors-custom .page-links a:focus .page-number,
-.colors-custom .page-links a:hover .page-number,
 .colors-custom .entry-footer a:focus,
 .colors-custom .entry-footer a:hover,
 .colors-custom .entry-footer .cat-links a:focus,
@@ -181,8 +179,7 @@ function sw2_custom_colors_css() {
 .colors-custom .entry-content blockquote.alignright,
 .colors-custom .colors-custom .taxonomy-description,
 .colors-custom .site-info a,
-.colors-custom .wp-caption,
-.colors-custom .gallery-caption {
+.colors-custom .wp-caption {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 60% ); /* base: #666; */
 }
 
@@ -203,11 +200,9 @@ function sw2_custom_colors_css() {
 .colors-custom .no-comments,
 .colors-custom .comment-awaiting-moderation,
 .colors-custom .page-numbers.current,
-.colors-custom .page-links .page-number,
 .colors-custom .navigation-top .current-menu-item > a,
 .colors-custom .navigation-top .current_page_item > a,
-.colors-custom .main-navigation a:hover,
-.colors-custom .site-content .wp-playlist-light .wp-playlist-current-item .wp-playlist-item-artist {
+.colors-custom .main-navigation a:hover {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 54% ); /* base: #767676; */
 }
 
@@ -223,9 +218,7 @@ function sw2_custom_colors_css() {
 .colors-custom .prev.page-numbers:focus,
 .colors-custom .prev.page-numbers:hover,
 .colors-custom .next.page-numbers:focus,
-.colors-custom .next.page-numbers:hover,
-.colors-custom .site-content .wp-playlist-light .wp-playlist-item:hover,
-.colors-custom .site-content .wp-playlist-light .wp-playlist-item:focus {
+.colors-custom .next.page-numbers:hover {
 	background: hsl( ' . esc_attr( $hue ) . ', ' . esc_attr( $saturation ) . ', 54% ); /* base: #767676; */
 }
 
@@ -316,20 +309,15 @@ function sw2_custom_colors_css() {
 .colors-custom .comments-pagination,
 .colors-custom .entry-footer,
 .colors-custom .site-footer {
-	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 7% ); /* base: #eee; */
+	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
 }
 
 .colors-custom .navigation-top,
 .colors-custom .main-navigation li,
 .colors-custom .entry-footer,
-.colors-custom .single-featured-image-header,
-.colors-custom .site-content .wp-playlist-light .wp-playlist-item,
+.colors-custom .single-featured-image-header
 .colors-custom tr {
-	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 7% ); /* base: #eee; */
-}
-
-.colors-custom .site-content .wp-playlist-light {
-	border-color: hsl( ' . $hue . ', ' . $saturation . ', 7% ); /* base: #eee; */
+	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
 }
 
 .colors-custom .site-header,
