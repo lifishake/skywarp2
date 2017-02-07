@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays footer site info
+ * 显示页脚版权和主题链接
  *
  * @package WordPress
  * @subpackage SkyWarp2
@@ -10,5 +10,6 @@
 
 ?>
 <div class="site-info">
-	<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyseventeen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyseventeen' ), 'WordPress' ); ?></a>
+    <?php echo (' &copy; 2005-'.date('Y').' 破袜子&nbsp;'); ?>
+	<a href="https://github.com/lifishake/skywarp2">skywarp2</a>
 </div><!-- .site-info -->

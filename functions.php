@@ -50,7 +50,6 @@ function skywarp2_setup() {
 	add_theme_support( 'html5', array(
 		'comment-form',
 		'comment-list',
-		'gallery',
 		'caption',
 	) );
 
@@ -87,29 +86,12 @@ add_action( 'after_setup_theme', 'skywarp2_setup' );
  *
  * @global int $content_width
  */
-function sw2_content_width() {
-
-	$content_width = 700;
-
-	if ( sw2_is_frontpage() ) {
-		$content_width = 1120;
-	}
-
-	$GLOBALS['content_width'] =  $content_width ;
+function skywarp2_content_width() {
+	$GLOBALS['content_width'] = 700 ;
 }
-add_action( 'after_setup_theme', 'sw2_content_width', 0 );
+add_action( 'after_setup_theme', 'skywarp2_content_width', 0 );
 
 function skywarp2_widgets_init() {
-	register_sidebar( array(
-		'name'          => 'Sidebar',
-		'id'            => 'sidebar-1',
-		'description'   => '添加侧边栏小工具',
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
 	register_sidebar( array(
 		'name'          => 'Footer 1',
 		'id'            => 'sidebar-2',
@@ -205,7 +187,7 @@ function sw2_content_image_sizes_attr( $sizes, $size ) {
 		$sizes = '(max-width: 706px) 89vw, (max-width: 767px) 82vw, 740px';
 	}
 
-	if ( is_active_sidebar( 'sidebar-1' ) || is_archive() || is_search() || is_home() || is_page() ) {
+	if ( is_archive() || is_search() || is_home() || is_page() ) {
 		if ( ! ( is_page() && 'one-column' === get_theme_mod( 'page_options' ) ) && 767 <= $width ) {
 			 $sizes = '(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px';
 		}

@@ -3,8 +3,6 @@ Theme Name: Twenty Seventeen
 Description: IE9 specific styles.
 */
 
-.has-header-image.twentyseventeen-front-page .custom-header,
-.has-header-video.twentyseventeen-front-page .custom-header,
 .has-header-image.home.blog .custom-header,
 .has-header-video.home.blog .custom-header {
 	height: 300px;
@@ -18,26 +16,19 @@ Description: IE9 specific styles.
 
 @media screen and (min-width: 30em) {
 
-	.has-header-image.twentyseventeen-front-page .custom-header,
-	.has-header-video.twentyseventeen-front-page .custom-header,
 	.has-header-image.home.blog .custom-header,
 	.has-header-video.home.blog .custom-header,
-	.twentyseventeen-front-page.has-header-image .custom-header-media,
-	.home.blog.has-header-image .custom-header-media,
-	.panel-image {
+	.home.blog.has-header-image .custom-header-media {
 		height: 700px;
 	}
 }
 
 @media screen and (min-width: 48em) {
 
-	.has-header-image.twentyseventeen-front-page .custom-header,
-	.has-header-video.twentyseventeen-front-page .custom-header,
+
 	.has-header-image.home.blog .custom-header,
 	.has-header-video.home.blog .custom-header,
-	.twentyseventeen-front-page.has-header-image .custom-header-media,
-	.home.blog.has-header-image .custom-header-media,
-	.panel-image {
+	.home.blog.has-header-image .custom-header-media {
 		height: 1000px;
 	}
 }

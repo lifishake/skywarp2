@@ -52,14 +52,8 @@ function sw2_custom_colors_css() {
 .colors-custom .widget_authors a:hover strong,
 .colors-custom .entry-title a:focus,
 .colors-custom .entry-title a:hover,
-.colors-custom .entry-meta a:focus,
-.colors-custom .entry-meta a:hover,
-.colors-custom.blog .entry-meta a.post-edit-link:focus,
-.colors-custom.blog .entry-meta a.post-edit-link:hover,
-.colors-custom.archive .entry-meta a.post-edit-link:focus,
-.colors-custom.archive .entry-meta a.post-edit-link:hover,
-.colors-custom.search .entry-meta a.post-edit-link:focus,
-.colors-custom.search .entry-meta a.post-edit-link:hover,
+.entry-meta a:focus,
+.entry-meta a:hover,
 .colors-custom .entry-footer a:focus,
 .colors-custom .entry-footer a:hover,
 .colors-custom .entry-footer .cat-links a:focus,
@@ -110,24 +104,18 @@ function sw2_custom_colors_css() {
 .colors-custom .colors-custom input[type="datetime-local"]:focus,
 .colors-custom input[type="color"]:focus,
 .colors-custom textarea:focus,
-.colors-custom button.secondary,
 .colors-custom input[type="reset"],
-.colors-custom input[type="button"].secondary,
-.colors-custom input[type="reset"].secondary,
-.colors-custom input[type="submit"].secondary,
 .colors-custom .dropdown-toggle,
 .colors-custom .menu-toggle,
-.colors-custom .page .panel-content .entry-title,
 .colors-custom .page-title,
-.colors-custom.page:not(.twentyseventeen-front-page) .entry-title,
+.colors-custom.page .entry-title,
 .colors-custom .comment-metadata a.comment-edit-link,
 .colors-custom .comment-reply-link .icon,
 .colors-custom h2.widget-title,
 .colors-custom mark,
 .colors-custom .post-navigation a:focus .icon,
 .colors-custom .post-navigation a:hover .icon,
-.colors-custom .site-content .site-content-light,
-.colors-custom .twentyseventeen-panel .recent-posts .entry-header .edit-link {
+.colors-custom .site-content .site-content-light {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 87% ); /* base: #222; */
 }
 
@@ -189,11 +177,8 @@ function sw2_custom_colors_css() {
 }
 
 .colors-custom h5,
-.colors-custom .entry-meta,
-.colors-custom .entry-meta a,
-.colors-custom.blog .entry-meta a.post-edit-link,
-.colors-custom.archive .entry-meta a.post-edit-link,
-.colors-custom.search .entry-meta a.post-edit-link,
+.entry-meta,
+.entry-meta a,
 .colors-custom .nav-subtitle,
 .colors-custom .comment-metadata,
 .colors-custom .comment-metadata a,
@@ -222,16 +207,8 @@ function sw2_custom_colors_css() {
 	background: hsl( ' . esc_attr( $hue ) . ', ' . esc_attr( $saturation ) . ', 54% ); /* base: #767676; */
 }
 
-.colors-custom button.secondary:hover,
-.colors-custom button.secondary:focus,
 .colors-custom input[type="reset"]:hover,
 .colors-custom input[type="reset"]:focus,
-.colors-custom input[type="button"].secondary:hover,
-.colors-custom input[type="button"].secondary:focus,
-.colors-custom input[type="reset"].secondary:hover,
-.colors-custom input[type="reset"].secondary:focus,
-.colors-custom input[type="submit"].secondary:hover,
-.colors-custom input[type="submit"].secondary:focus,
 .colors-custom hr {
 	background: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
@@ -272,11 +249,7 @@ function sw2_custom_colors_css() {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
 
-.colors-custom button.secondary,
 .colors-custom input[type="reset"],
-.colors-custom input[type="button"].secondary,
-.colors-custom input[type="reset"].secondary,
-.colors-custom input[type="submit"].secondary,
 .colors-custom .prev.page-numbers,
 .colors-custom .next.page-numbers {
 	background-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #ddd; */
@@ -288,13 +261,19 @@ function sw2_custom_colors_css() {
 	border-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #ddd; */
 }
 
-.colors-custom.twentyseventeen-front-page article:not(.has-post-thumbnail):not(:first-child),
-.colors-custom .widget ul li {
-	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #ddd; */
-}
-
 .colors-custom .widget ul li {
 	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #ddd; */
+}
+
+.site-title,
+.site-title a {
+	color: hsl( ' . $hue . ', ' . $saturation . ', 60% );
+}
+
+.site-title a:hover,
+.site-title a:active
+{
+	color: hsl( ' . $hue . ', ' . $saturation . ', 76% );
 }
 
 .colors-custom pre,

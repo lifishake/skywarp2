@@ -27,9 +27,5 @@
 				<?php endif; ?>
 		</div><!-- .site-branding-text -->
 
-		<?php if ( ( sw2_is_frontpage() || ( is_home() && is_front_page() ) ) && ! has_nav_menu( 'top' ) ) : ?>
-		<a href="#content" class="menu-scroll-down"><?php echo sw2_get_svg( array( 'icon' => 'arrow-right' ) ); ?><span class="screen-reader-text"><?php echo( '跳至正文' ); ?></span></a>
-	<?php endif; ?>
-
 	</div><!-- .wrap -->
 </div><!-- .site-branding -->

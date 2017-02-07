@@ -19,7 +19,7 @@ get_header(); ?>
 		</header>
 	<?php else : ?>
 	<header class="page-header">
-		<h2 class="page-title"><?php echo( '文章' ); ?></h2>
+		<h2 class="page-title"><?php echo( '文章列表' ); ?></h2>
 	</header>
 	<?php endif; ?>
 
@@ -32,11 +32,6 @@ get_header(); ?>
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
 					get_template_part( 'template-parts/post/content', get_post_format() );
 
 				endwhile;
@@ -56,7 +51,6 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
 </div><!-- .wrap -->
 
 <?php get_footer();

@@ -12,8 +12,7 @@ h1 {
 	font-size: 1.875rem;
 }
 
-h2,
-.page .panel-content .recent-posts .entry-title {
+h2 {
 	font-size: 26px;
 	font-size: 1.625rem;
 }
@@ -60,7 +59,6 @@ img {
 	overflow: hidden;
 }
 
-.has-header-image.twentyseventeen-front-page .custom-header,
 .has-header-image.home.blog .custom-header {
 	display: block;
 }
@@ -73,7 +71,6 @@ img {
 	padding: 45px 0;
 }
 
-.has-header-image.twentyseventeen-front-page .site-branding,
 .has-header-image.home.blog .site-branding {
 	bottom: 0;
 	display: block;
@@ -133,27 +130,22 @@ img {
 
 /* Front Page */
 
-.twentyseventeen-front-page.has-header-image .custom-header,
-.blog.home.has-header-image .custom-header,
-.panel-image {
+.blog.home.has-header-image .custom-header {
 	height: 800px;
 	max-height: 800px;
 	padding-top: 0;
 }
 
-.twentyseventeen-front-page .custom-header-media,
 .blog.home .custom-header-media {
 	background-position: center center;
 }
 
-.twentyseventeen-front-page.has-header-image .site-branding,
 .home.blog.has-header-image .site-branding {
 	bottom: 20px;
 	position: absolute;
 	width: 100%;
 }
 
-.page .panel-content .entry-title,
 .page-title,
 .page .entry-title {
 	font-size: 14px;
@@ -204,22 +196,4 @@ time.published {
 
 ol.children .children {
 	padding-left: 2em;
-}
-
-/* RTL Styles */
-
-.rtl .has-header-image.twentyseventeen-front-page .site-branding,
-.rtl .has-header-image.home.blog .site-branding {
-	left: auto;
-	right: 0;
-}
-
-.rtl .entry-footer .cat-links,
-.rtl .entry-footer .tags-links {
-	padding-right: 0;
-}
-
-.rtl ol.children .children {
-	padding-left: 0;
-	padding-right: 2em;
 }
