@@ -198,13 +198,13 @@ function skywarp2_social_links_icons() {
 		'tumblr.com'      => 'tumblr',
 		'twitch.tv'       => 'twitch',
 		'twitter.com'     => 'twitter',
-		'vimeo.com'       => 'vimeo',
 		'vine.co'         => 'vine',
 		'vk.com'          => 'vk',
 		'wordpress.org'   => 'wordpress',
 		'wordpress.com'   => 'wordpress',
 		'yelp.com'        => 'yelp',
 		'youtube.com'     => 'youtube',
+		'music.163.com'	  => 'cloudmusic',
 	);
 
 	/**

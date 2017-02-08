@@ -145,7 +145,6 @@ function sw2_custom_colors_css() {
 }
 
 .colors-custom h2,
-.colors-custom blockquote,
 .colors-custom input[type="text"],
 .colors-custom input[type="email"],
 .colors-custom input[type="url"],
@@ -163,8 +162,6 @@ function sw2_custom_colors_css() {
 .colors-custom input[type="color"],
 .colors-custom textarea,
 .colors-custom .site-description,
-.colors-custom .entry-content blockquote.alignleft,
-.colors-custom .entry-content blockquote.alignright,
 .colors-custom .colors-custom .taxonomy-description,
 .colors-custom .site-info a,
 .colors-custom .wp-caption {
@@ -296,7 +293,7 @@ function sw2_custom_colors_css() {
 .colors-custom .entry-footer,
 .colors-custom .single-featured-image-header
 .colors-custom tr {
-	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
+	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #eee; */
 }
 
 .colors-custom .site-header,

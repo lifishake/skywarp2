@@ -19,7 +19,7 @@ get_header(); ?>
 		</header>
 	<?php else : ?>
 	<header class="page-header">
-		<h2 class="page-title"><?php echo( '文章列表' ); ?></h2>
+		<h2 class="page-title screen-reader-text"><?php echo( '文章列表' ); ?></h2>
 	</header>
 	<?php endif; ?>
 

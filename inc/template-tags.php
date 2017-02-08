@@ -73,7 +73,7 @@ if ( ! function_exists( 'twentyseventeen_entry_footer' ) ) :
 function twentyseventeen_entry_footer() {
 
 	/* translators: used between list items, there is a space after the comma */
-	$separate_meta = __( ', ', 'twentyseventeen' );
+	$separate_meta = ', ';
 
 	// Get Categories for posts.
 	$categories_list = get_the_category_list( $separate_meta );
@@ -85,8 +85,10 @@ function twentyseventeen_entry_footer() {
 	if ( ( $categories_list || $tags_list ) || get_edit_post_link() ) {
 
 		echo '<footer class="entry-footer">';
-
 			if ( 'post' === get_post_type() ) {
+				if ( is_single() && (!(has_tag('zhuanzai') || has_category('zhaichaohedaolian'))) ) {
+					get_template_part( 'template-parts/post/meta', 'license' );
+				}
 				echo '<span class="cat-tags-links">';
 
 					// Make sure there's more than one category before displaying.
