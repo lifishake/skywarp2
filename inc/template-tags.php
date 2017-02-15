@@ -51,10 +51,18 @@ function skywarp2_rel_post_date() {
 	return skywarp2_timediff( $post_date_time, $date_today_time ,'&nbsp;','前' ) ;
 }
 
+function skywarp2_rel_comment_date() {
+	global $post , $comment;
+	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
+	$comment_date_time = mysql2date('j-n-Y H:i:s', $comment->comment_date, false);
+	return skywarp2_timediff( $post_date_time, $comment_date_time ,'&nbsp;','后' ) ;
+}
+
 function skywarp2_time_link() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	$time_string = '<span class="calendar-desc">%1$s<time class="entry-date published updated" datetime="%2$s">%3$s</time></span>';
 
 	$time_string = sprintf( $time_string,
+		sw2_get_svg( array( 'icon' => 'calendar' ) ),
 		get_the_date( DATE_W3C ),
 		skywarp2_rel_post_date()
 	);
@@ -64,6 +72,50 @@ function skywarp2_time_link() {
 		/* translators: %s: post date */
 		'<span class="screen-reader-text">Posted on</span> %s', $time_string
 	);
+}
+
+function skywarp2_entry_meta(){
+	$has_edit_link = true;
+	$all_meta = '';
+	$has_date = true;
+	$has_category = true;
+	$has_tag = true;
+	if ( is_category() ) {
+		$has_category = false;
+	}
+	if ( is_tag() ) {
+		$has_tag = false;
+	}
+	if ( is_date() ) {
+		$has_date = false;
+	}
+	if ( is_single() ) {
+		$has_category = false;
+		$has_tag = false;
+		$has_edit_link = false;
+	}
+	if ( is_page() )
+	{
+		$has_date = false;
+		$has_category = false;
+		$has_tag = false;
+		$has_edit_link = false;
+	}
+	if ( $has_date ) {
+		$all_meta .= skywarp2_time_link();
+	}
+	if ( $has_tag )
+	{
+		$tags_list = get_the_tag_list( '', ', ' );
+		if ( $tags_list )
+		{
+			$all_meta.= '<span class="tag-desc">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . $tags_list . '</span>';
+		}
+	}
+	echo $all_meta;
+	if ( $has_edit_link ) {
+		sw2_edit_link();
+	}
 }
 
 if ( ! function_exists( 'twentyseventeen_entry_footer' ) ) :
@@ -93,11 +145,11 @@ function twentyseventeen_entry_footer() {
 
 					// Make sure there's more than one category before displaying.
 					if ( $categories_list ) {
-						echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . '<span class="screen-reader-text">Categories</span>' . $categories_list . '</span>';
+						echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . $categories_list . '</span>';
 					}
 
 					if ( $tags_list ) {
-						echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . '<span class="screen-reader-text">' . __( 'Tags', 'twentyseventeen' ) . '</span>' . $tags_list . '</span>';
+						echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . $tags_list . '</span>';
 					}
 
 				echo '</span>';

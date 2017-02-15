@@ -17,7 +17,7 @@
 		<?php
 			if ( 'post' === get_post_type() ) :
 				echo '<div class="entry-meta">';
-						echo skywarp2_time_link();
+						skywarp2_entry_meta();
 				echo '</div><!-- .entry-meta -->';
 			endif;
 			the_title( '<h1 class="entry-title">', '</h1>' );

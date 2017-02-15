@@ -1,47 +1,30 @@
 <?php
 /**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage SkyWarp2
- * @since 1.0
- * @version 1.0
+ * 留言模板
+ * @package skywarp2
  */
 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
+/*如果有密码保护，就不显示评论。*/
 if ( post_password_required() ) {
-	return;
+    return;
 }
 ?>
 
 <div id="comments" class="comments-area">
 
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
+	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
-			<?php printf('%1$s条评论', get_comments_number() ); ?>
+		<?php
+			$comment_arg=array();
+            $comment_arg['post_id']=get_the_ID();
+            $comment_arg['count']='true';
+            $comment_arg['user_id']=0;/*don't count for known users*/
+            $comment_arg['type']='comment';
+        ?>
+			<?php printf('已有%1$s条评论', get_comments($comment_arg) ); ?>
 		</h2>
 
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'avatar_size' => 100,
-					'style'       => 'ol',
-					'short_ping'  => true,
-					'reply_text'  => sw2_get_svg( array( 'icon' => 'mail-reply' ) ) . 'Reply',
-				) );
-			?>
-		</ol>
+		<?php get_template_part( 'template-parts/comment/list', 'single' ); ?>
 
 		<?php the_comments_pagination( array(
 			'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">前一页</span>',
@@ -54,10 +37,9 @@ if ( post_password_required() ) {
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
 		<p class="no-comments"><?php echo( '评论已关闭' ); ?></p>
-	<?php
-	endif;
-
-	comment_form();
+	<?php endif;
+		get_template_part( 'template-parts/comment/input', 'fields' );
+	//comment_form();
 	?>
 
 </div><!-- #comments -->

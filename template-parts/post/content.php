@@ -22,8 +22,7 @@
 		<?php
 			if ( 'post' === get_post_type() ) :
 				echo '<div class="entry-meta">';
-						echo skywarp2_time_link();
-						sw2_edit_link();
+						skywarp2_entry_meta();
 				echo '</div><!-- .entry-meta -->';
 			endif;
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );

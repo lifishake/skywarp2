@@ -42,12 +42,8 @@ function sw2_custom_colors_css() {
 .colors-custom .site-footer .widget-area a:hover,
 .colors-custom .posts-navigation a:focus,
 .colors-custom .posts-navigation a:hover,
-.colors-custom .comment-metadata a:focus,
-.colors-custom .comment-metadata a:hover,
-.colors-custom .comment-metadata a.comment-edit-link:focus,
-.colors-custom .comment-metadata a.comment-edit-link:hover,
-.colors-custom .comment-reply-link:focus,
-.colors-custom .comment-reply-link:hover,
+.comment-reply-link:focus,
+.comment-reply-link:hover,
 .colors-custom .widget_authors a:focus strong,
 .colors-custom .widget_authors a:hover strong,
 .colors-custom .entry-title a:focus,
@@ -109,13 +105,12 @@ function sw2_custom_colors_css() {
 .colors-custom .menu-toggle,
 .colors-custom .page-title,
 .colors-custom.page .entry-title,
-.colors-custom .comment-metadata a.comment-edit-link,
-.colors-custom .comment-reply-link .icon,
 .colors-custom h2.widget-title,
 .colors-custom mark,
 .colors-custom .post-navigation a:focus .icon,
 .colors-custom .post-navigation a:hover .icon,
-.colors-custom .site-content .site-content-light {
+.colors-custom .site-content .site-content-light,
+.mention {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 87% ); /* base: #222; */
 }
 
@@ -169,7 +164,7 @@ function sw2_custom_colors_css() {
 }
 
 .colors-custom abbr,
-.colors-custom acronym {
+.colors-custom acronym, {
 	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 60% ); /* base: #666; */
 }
 
@@ -177,8 +172,6 @@ function sw2_custom_colors_css() {
 .entry-meta,
 .entry-meta a,
 .colors-custom .nav-subtitle,
-.colors-custom .comment-metadata,
-.colors-custom .comment-metadata a,
 .colors-custom .no-comments,
 .colors-custom .comment-awaiting-moderation,
 .colors-custom .page-numbers.current,
@@ -186,6 +179,10 @@ function sw2_custom_colors_css() {
 .colors-custom .navigation-top .current_page_item > a,
 .colors-custom .main-navigation a:hover {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 54% ); /* base: #767676; */
+}
+
+.bypostauthor .author-url {
+    text-shadow: 1px 1px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% );
 }
 
 .colors-custom button:hover,
@@ -285,15 +282,16 @@ function sw2_custom_colors_css() {
 .colors-custom .comments-pagination,
 .colors-custom .entry-footer,
 .colors-custom .site-footer {
-	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
+	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #eee; */
 }
 
+ol.comment-list li article,
 .colors-custom .navigation-top,
 .colors-custom .main-navigation li,
 .colors-custom .entry-footer,
 .colors-custom .single-featured-image-header
 .colors-custom tr {
-	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #eee; */
+	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
 }
 
 .colors-custom .site-header,

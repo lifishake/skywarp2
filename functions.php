@@ -19,45 +19,27 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 
 function skywarp2_setup() {
 
-	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
 	add_theme_support( 'title-tag' );
 
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
 	add_theme_support( 'post-thumbnails' );
-
-	//remove_theme_support('custom-header','video');
 
 	add_image_size( 'skywarp2-featured-image', 800, 480, true );
 
 	add_image_size( 'skywarp2-thumbnail-avatar', 100, 100, true );
 
-	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'top'    => 'Top Menu',
 		'social' => 'Social Links Menu',
 	) );
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
 	add_theme_support( 'html5', array(
 		'comment-form',
 		'comment-list',
 		'caption',
 	) );
 
-	/*
-	 * Enable support for Post Formats.
-	 *
-	 * See: https://codex.wordpress.org/Post_Formats
-	 */
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
@@ -67,22 +49,18 @@ function skywarp2_setup() {
 		'audio',
 	) );
 
-	// Add theme support for Custom Logo.
 	add_theme_support( 'custom-logo', array(
 		'width'       => 250,
 		'height'      => 250,
 		'flex-width'  => true,
 	) );
 
-	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'skywarp2_setup' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
+ * 设定媒体宽度的全局变量。优先级为0，特别优先。
  *
  * @global int $content_width
  */
@@ -90,6 +68,7 @@ function skywarp2_content_width() {
 	$GLOBALS['content_width'] = 700 ;
 }
 add_action( 'after_setup_theme', 'skywarp2_content_width', 0 );
+
 
 function skywarp2_widgets_init() {
 	register_sidebar( array(
@@ -128,7 +107,7 @@ function sw2_colors_css_wrap() {
 	$hue = absint( get_theme_mod( 'colorscheme_hue', 250 ) );
 ?>
 	<style type="text/css" id="custom-theme-colors" <?php if ( is_customize_preview() ) { echo 'data-hue="' . $hue . '"'; } ?>>
-		<?php echo sw2_custom_colors_css(); ?>
+		<?php echo sw2_custom_colors_css(); /*预览时有效*/?>
 	</style>
 <?php }
 add_action( 'wp_head', 'sw2_colors_css_wrap' );
@@ -174,8 +153,12 @@ function sw2_scripts() {
 
 	wp_localize_script( 'sw2-skip-link-focus-fix', 'sw2ScreenReaderText', $sw2_l10n );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if ( is_singular() && comments_open() ) {
+		if ( get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+		wp_enqueue_script( 'sw2-ajax-comment', get_theme_file_uri( '/assets/js/ajax-comment.js' ), array( 'jquery' ), '1.0', true );
+		wp_localize_script( 'sw2-ajax-comment', 'ajaxcomment', array( 'ajax_url'   => admin_url('admin-ajax.php')));
 	}
 }
 add_action( 'wp_enqueue_scripts', 'sw2_scripts' );
@@ -252,3 +235,7 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+/**
+ * AJAX-comment
+ */
+require get_parent_theme_file_path( '/inc/ajax-comment.php' );
