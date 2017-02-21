@@ -9,6 +9,100 @@
  * @since 1.0
  */
 
+/**
+ * 作用: archive标题
+ * 来源: 破袜子原创
+ */
+function skywarp2_archive_title() {
+	/*为了中文化,放弃wordpress自带的the_archive_title()*/
+	$format = '%1$s%2$s: %3$s%4$s';
+	$before = '<h1 class="page-title">';
+	$after = '</h1>';
+	$part1='';
+	$part2='';
+	if ( is_category() ) {
+		$part1 = '分类';
+		$part2 = single_cat_title( '', false );
+	}
+	else if ( is_tag() ) {
+		$part1 = '标签';
+		$part2 = single_tag_title( '', false );
+	}
+	else if ( is_year() ) {
+		$part1 = '年';
+		$part2 =  get_the_date('Y') ;
+	}
+	else if ( is_month() ) {
+		$part1 = '月';
+		$part2 = get_the_date('m/Y');
+	}
+	else if ( is_day() ) {
+		$part1 = '日';
+		$part2 = get_the_date(get_option('date_format'));
+	}
+	else{
+		$part1 = '归档';
+	}
+	$out = sprintf($format, $before, $part1, $part2, $after);
+	echo $out ;
+}
+
+function skywarp2_get_categories_trace(){
+	if ( !is_single() && !is_category() ||is_attachment() )
+	{
+		return '';
+	}
+	$category = get_the_category();
+	$catID = $category[0]->cat_ID;
+	$return = get_category_parents($catID, true, ' &raquo; ', false);
+	$pos = strrpos($return,"&raquo;");
+	if ( $pos !== false ) {
+		$return = substr_replace($return, "", -8,8);
+	}
+	return $return;
+}
+
+function skywarp2_breadcrumb_category(){
+	if ( !is_category() ){
+		return ;
+	}
+	$home = '<a href="'.home_url().'" >主页</a>';
+	$categories = skywarp2_get_categories_trace();
+	echo '<div class="taxonomy-description"><span class="header-breadcrumb">'.$home.' &raquo; '.$categories.'</span></div>';
+}
+
+function skywarp2_get_dates_trace(){
+	if ( !is_single() && !is_date() ||is_attachment() )
+	{
+		return '';
+	}
+	$archive_year  = get_the_time('Y'); 
+	$archive_month = get_the_time('m');
+	$return = sprintf('<a href="%1$s">%2$s</a> / <a href="%3$s">%4$s</a>', get_year_link($archive_year), $archive_year, get_month_link($archive_year, $archive_month), $archive_month );
+	return $return;
+}
+
+function skywarp2_breadcrumb_date(){
+	if ( !is_date() ){
+		return ;
+	}
+	$home = '<a href="'.home_url().'" >主页</a>';
+	$date = skywarp2_get_dates_trace();
+	echo '<div class="taxonomy-description"><span class="header-breadcrumb">'.$home.' &raquo; '.$date.'</span></div>';
+}
+
+function skywarp2_breadcrumb(){
+	if ( is_date() ){
+		skywarp2_breadcrumb_date();
+	}
+	elseif ( is_category() ){
+		skywarp2_breadcrumb_category();
+	}
+	else{
+		return;
+	}
+}
+
 function skywarp2_timediff( $from, $to, $before, $after) {
 	if ( empty($from) || empty($to) )
 		return '';
@@ -79,7 +173,7 @@ function skywarp2_entry_meta(){
 	$all_meta = '';
 	$has_date = true;
 	$has_category = true;
-	$has_tag = true;
+	$has_tag = false;
 	if ( is_category() ) {
 		$has_category = false;
 	}
@@ -124,14 +218,8 @@ if ( ! function_exists( 'twentyseventeen_entry_footer' ) ) :
  */
 function twentyseventeen_entry_footer() {
 
-	/* translators: used between list items, there is a space after the comma */
-	$separate_meta = ', ';
-
-	// Get Categories for posts.
-	$categories_list = get_the_category_list( $separate_meta );
-
 	// Get Tags for posts.
-	$tags_list = get_the_tag_list( '', $separate_meta );
+	$tags_list = get_the_tag_list( '', ', ' );
 
 	// We don't want to output .entry-footer if it will be empty, so make sure its not.
 	if ( ( $categories_list || $tags_list ) || get_edit_post_link() ) {
@@ -144,9 +232,8 @@ function twentyseventeen_entry_footer() {
 				echo '<span class="cat-tags-links">';
 
 					// Make sure there's more than one category before displaying.
-					if ( $categories_list ) {
-						echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . $categories_list . '</span>';
-					}
+					echo '<span class="date-links">' . sw2_get_svg( array( 'icon' => 'calendar' ) ) . skywarp2_get_dates_trace() . '</span>';
+					echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . skywarp2_get_categories_trace() . '</span>';
 
 					if ( $tags_list ) {
 						echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . $tags_list . '</span>';

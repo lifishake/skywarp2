@@ -342,6 +342,14 @@ template {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
 /*--------------------------------------------------------------
 3.0 Alignments
 --------------------------------------------------------------*/
@@ -822,7 +830,6 @@ a:focus {
 
 a:hover,
 a:active {
-	color: #e5e5e5;
 	outline: 0;
 }
 
@@ -847,6 +854,7 @@ a:active {
 .entry-meta a,
 .entry-footer a,
 .entry-footer .cat-links a,
+.entry-footer .date-links a,
 .entry-footer .tags-links a,
 .edit-link a,
 .post-navigation a,
@@ -986,7 +994,6 @@ a .nav-title,
 }
 
 /* Menu toggle */
-
 .menu-toggle {
 	background-color: transparent;
 	border: 0;
@@ -994,8 +1001,26 @@ a .nav-title,
 	box-shadow: none;
 	color: #222;
 	display: none;
-	font-size: 14px;
-	font-size: 0.875rem;
+	font-size: 18px;
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.5;
+	margin: 1px auto 2px;
+	padding: 1em 48% 1em 1em;
+	padding: 1em 48vw 1em 1em;
+	text-shadow: none;
+	float: right;
+}
+
+.navigation-logo {
+	background-color: transparent;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #EEE;
+	display: none;
+	font-size: 18px;
+	font-size: 1rem;
 	font-weight: 800;
 	line-height: 1.5;
 	margin: 1px auto 2px;
@@ -1004,15 +1029,17 @@ a .nav-title,
 }
 
 /* Display the menu toggle when JavaScript is available. */
-
+.js .site-navigation-fixed .navigation-logo,
 .js .menu-toggle {
-	display: block;
+	display: inline-block;
 }
 
 .main-navigation.toggled-on ul.nav-menu {
 	display: block;
 }
 
+.navigation-logo:hover,
+.navigation-logo:focus,
 .menu-toggle:hover,
 .menu-toggle:focus {
 	background-color: transparent;
@@ -1020,6 +1047,7 @@ a .nav-title,
 	box-shadow: none;
 }
 
+.navigation-logo:focus,
 .menu-toggle:focus {
 	outline: thin solid;
 }
@@ -1201,11 +1229,10 @@ html {
 	position: relative;
 }
 
-.has-header-image.home.blog .custom-header,
-.has-header-video.home.blog .custom-header {
+.has-header-image.home.blog .custom-header {
 	display: table;
-	height: 300px;
-	height: 75vh;
+	height: 225px;
+	height: 25vh;
 	width: 100%;
 }
 
@@ -1235,9 +1262,7 @@ html {
 	z-index: 2;
 }
 
-.has-header-image .custom-header-media img,
-.has-header-video .custom-header-media video,
-.has-header-video .custom-header-media iframe {
+.has-header-image .custom-header-media img {
 	position: fixed;
 	height: auto;
 	left: 50%;
@@ -1270,8 +1295,6 @@ html {
 /* For browsers that support 'object-fit' */
 @supports ( object-fit: cover ) {
 	.has-header-image .custom-header-media img,
-	.has-header-video .custom-header-media video,
-	.has-header-video .custom-header-media iframe,
 	.has-header-image:not(.home) .custom-header-media img {
 		height: 100%;
 		left: 0;
@@ -1292,8 +1315,7 @@ body:not(.has-header-image):not(.has-header-video) .custom-header-media {
 	display: none;
 }
 
-.has-header-image.home.blog .site-branding,
-.has-header-video.home.blog .site-branding {
+.has-header-image.home.blog .site-branding {
 	display: table-cell;
 	height: 100%;
 	vertical-align: bottom;
@@ -1564,7 +1586,12 @@ body .entry-header {
 	padding: 0 0.5em;
 }
 
+.entry-footer .cat-tags-links {
+    line-height: 2;
+}
+
 .entry-footer .cat-links,
+.entry-footer .date-links,
 .entry-footer .tags-links {
 	display: block;
 	font-size: 11px;
@@ -1575,16 +1602,12 @@ body .entry-header {
 	text-transform: uppercase;
 }
 
-.entry-footer .cat-links + .tags-links {
+.entry-footer .cat-links + .date-links + .tags-links {
 	margin-top: 1em;
 }
 
-.entry-footer .cat-links a,
-.entry-footer .tags-links a {
-	color: #333;
-}
-
 .entry-footer .cat-links .icon,
+.entry-footer .date-links .icon,
 .entry-footer .tags-links .icon {
 	color: #767676;
 	left: 0;
@@ -2336,6 +2359,9 @@ object {
 		width: 100%;
 		z-index: 7;
 	}
+	.admin-bar .site-navigation-fixed.navigation-top {
+		top: 32px;
+	}
 }
 
 /* Adjust positioning of edit shortcuts, override style in customize-preview.css */
@@ -2433,6 +2459,7 @@ object {
 
 }
 
+/*正常屏幕大小*/
 @media screen and (min-width: 48em) {
 
 	/* Typography */
@@ -2471,8 +2498,7 @@ object {
 		margin-bottom: 0;
 	}
 
-	.has-header-image.home.blog .site-branding,
-	.has-header-video.home.blog .site-branding {
+	.has-header-image.home.blog .site-branding {
 		bottom: 0;
 		display: block;
 		left: 0;
@@ -2482,8 +2508,7 @@ object {
 		width: 100%;
 	}
 
-	.has-header-image.home.blog .custom-header,
-	.has-header-video.home.blog .custom-header {
+	.has-header-image.home.blog .custom-header {
 		display: block;
 		height: auto;
 	}
@@ -2493,14 +2518,12 @@ object {
 		position: relative;
 	}
 
-	.home.blog.has-header-image .custom-header-media,
-	.home.blog.has-header-video .custom-header-media {
+	.home.blog.has-header-image .custom-header-media {
 		height: 0;
 		position: relative;
 	}
 
-	.has-header-image:not(.home) .custom-header-media,
-	.has-header-video:not(.home) .custom-header-media {
+	.has-header-image:not(.home) .custom-header-media {
 		bottom: 0;
 		height: auto;
 		left: 0;
@@ -2560,12 +2583,17 @@ object {
 		z-index: 7;
 	}
 
+	.js .site-navigation-fixed .navigation-logo {
+		display: none;
+	}
+
 	.admin-bar .site-navigation-fixed.navigation-top {
 		top: 32px;
 	}
 
 	/* Main Navigation */
 
+	.js .navigation-logo,
 	.js .menu-toggle,
 	.js .dropdown-toggle {
 		display: none;
@@ -2772,13 +2800,11 @@ object {
 
 	/* Front Page */
 
-	.home.blog.has-header-image .site-branding,
-	.home.blog.has-header-video .site-branding {
+	.home.blog.has-header-image .site-branding {
 		margin-bottom: 70px;
 	}
 
-	.home.blog.has-header-image .custom-header-media,
-	.home.blog.has-header-video .custom-header-media {
+	.home.blog.has-header-image .custom-header-media {
 		height: 400px;
 		max-height: 100%;
 		overflow: hidden;
@@ -2885,14 +2911,12 @@ object {
 
 	/* blog and archive */
 
-	.blog .entry-content blockquote.alignleft,
-	.archive .entry-content blockquote.alignleft {
+	.blog .entry-content blockquote.alignleft {
 		margin-left: -72.5%;
 		width: 62%;
 	}
 
-	.blog .entry-content blockquote.alignright,
-	.archive .entry-content blockquote.alignright {
+	.blog .entry-content blockquote.alignright {
 		margin-right: 0;
 		width: 36%;
 	}
@@ -3007,7 +3031,7 @@ object {
 	}
 
 }
-
+/*更宽的屏*/
 @media screen and ( min-width: 67em ) {
 
 	/* Layout */
@@ -3060,8 +3084,7 @@ object {
 
 @media screen and ( min-width: 79em ) {
 
-	.blog .entry-content blockquote.alignright,
-	.archive .entry-content blockquote.alignright {
+	.blog .entry-content blockquote.alignright {
 		margin-right: -20%;
 	}
 }
@@ -3164,8 +3187,7 @@ object {
 		padding: 0;
 	}
 
-	.home.blog.has-header-image .site-branding,
-	.home.blog.has-header-video .site-branding {
+	.home.blog.has-header-image .site-branding {
 		position: relative;
 	}
 
@@ -3233,14 +3255,6 @@ object {
 	background-color: #fff;
 }
 
-.a:hover,
-.a:active,
-.entry-content a:focus,
-.entry-content a:hover,
-.entry-summary a:focus,
-.entry-summary a:hover,
-.widget a:focus,
-.widget a:hover,
 .site-footer .widget-area a:focus,
 .site-footer .widget-area a:hover,
 .posts-navigation a:focus,
@@ -3251,10 +3265,6 @@ object {
 .widget_authors a:hover strong,
 .entry-title a:focus,
 .entry-title a:hover,
-.entry-footer .cat-links a:focus,
-.entry-footer .cat-links a:hover,
-.entry-footer .tags-links a:focus,
-.entry-footer .tags-links a:hover,
 .post-navigation a:focus,
 .post-navigation a:hover,
 .pagination a:not(.prev):not(.next):focus,
@@ -3294,6 +3304,8 @@ object {
 .entry-title a:hover,
 .entry-footer .cat-links a:focus,
 .entry-footer .cat-links a:hover,
+.entry-footer .date-links a:focus,
+.entry-footer .date-links a:hover,
 .entry-footer .tags-links a:focus,
 .entry-footer .tags-links a:hover,
 .post-navigation a:focus,
@@ -3339,6 +3351,7 @@ body,
 .label,
 .entry-title a,
 .entry-footer .cat-links a,
+.entry-footer .date-links a,
 .entry-footer .tags-links a,
 .format-quote blockquote,
 .nav-title,
@@ -3404,7 +3417,6 @@ body,
 .navigation-top a,
 .dropdown-toggle,
 .menu-toggle,
-.page-title,
 .page .entry-title,
 .h2.widget-title,
 .mark,
@@ -3475,11 +3487,6 @@ body,
 .social-navigation a:focus {
 	background: #999;
 	color: #222;
-}
-
-.entry-footer .cat-links .icon,
-.entry-footer .tags-links .icon {
-	color: #666;
 }
 
 .input[type="reset"]:hover,

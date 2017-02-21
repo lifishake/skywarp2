@@ -25,19 +25,19 @@ function sw2_custom_colors_css() {
 	$saturation = $saturation . '%';
 	$css = '
 /**
- * Twenty Seventeen: Color Patterns
+ * Sky Warp 2: Color 色板
  *
- * Colors are ordered from dark to light.
+ * 颜色按照从亮到暗的顺序
  */
 
-.colors-custom a:hover,
-.colors-custom a:active,
-.colors-custom .entry-content a:focus,
-.colors-custom .entry-content a:hover,
-.colors-custom .entry-summary a:focus,
-.colors-custom .entry-summary a:hover,
-.colors-custom .widget a:focus,
-.colors-custom .widget a:hover,
+a:hover,
+a:active,
+.entry-content a:focus,
+.entry-content a:hover,
+.entry-summary a:focus,
+.entry-summary a:hover,
+.widget a:focus,
+.widget a:hover,
 .colors-custom .site-footer .widget-area a:focus,
 .colors-custom .site-footer .widget-area a:hover,
 .colors-custom .posts-navigation a:focus,
@@ -52,10 +52,12 @@ function sw2_custom_colors_css() {
 .entry-meta a:hover,
 .colors-custom .entry-footer a:focus,
 .colors-custom .entry-footer a:hover,
-.colors-custom .entry-footer .cat-links a:focus,
-.colors-custom .entry-footer .cat-links a:hover,
-.colors-custom .entry-footer .tags-links a:focus,
-.colors-custom .entry-footer .tags-links a:hover,
+.entry-footer .cat-links a:focus,
+.entry-footer .cat-links a:hover,
+.entry-footer .date-links a:focus,
+.entry-footer .date-links a:hover,
+.entry-footer .tags-links a:focus,
+.entry-footer .tags-links a:hover,
 .colors-custom .post-navigation a:focus,
 .colors-custom .post-navigation a:hover,
 .colors-custom .pagination a:not(.prev):not(.next):focus,
@@ -74,7 +76,7 @@ function sw2_custom_colors_css() {
 .colors-custom .widget .widget-title a:hover,
 .colors-custom .widget ul li a:focus,
 .colors-custom .widget ul li a:hover {
-	color: hsl( ' . $hue . ', ' . $saturation . ', 100% ); /* base: #000; */
+	color: hsl( ' . $hue . ', ' . $saturation . ', 93% ); /* base: #000; */
 }
 
 .colors-custom button,
@@ -103,7 +105,7 @@ function sw2_custom_colors_css() {
 .colors-custom input[type="reset"],
 .colors-custom .dropdown-toggle,
 .colors-custom .menu-toggle,
-.colors-custom .page-title,
+.page-title,
 .colors-custom.page .entry-title,
 .colors-custom h2.widget-title,
 .colors-custom mark,
@@ -238,8 +240,9 @@ function sw2_custom_colors_css() {
 	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
 
-.colors-custom .entry-footer .cat-links .icon,
-.colors-custom .entry-footer .tags-links .icon {
+.entry-footer .cat-links .icon,
+.entry-footer .date-links .icon,
+.entry-footer .tags-links .icon {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
 
