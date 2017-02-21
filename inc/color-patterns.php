@@ -38,71 +38,50 @@ a:active,
 .entry-summary a:hover,
 .widget a:focus,
 .widget a:hover,
-.colors-custom .site-footer .widget-area a:focus,
-.colors-custom .site-footer .widget-area a:hover,
-.colors-custom .posts-navigation a:focus,
-.colors-custom .posts-navigation a:hover,
+.site-footer .widget-area a:focus,
+.site-footer .widget-area a:hover,
+.posts-navigation a:focus,
+.posts-navigation a:hover,
 .comment-reply-link:focus,
 .comment-reply-link:hover,
-.colors-custom .widget_authors a:focus strong,
-.colors-custom .widget_authors a:hover strong,
-.colors-custom .entry-title a:focus,
-.colors-custom .entry-title a:hover,
+.entry-title a:focus,
+.entry-title a:hover,
 .entry-meta a:focus,
 .entry-meta a:hover,
-.colors-custom .entry-footer a:focus,
-.colors-custom .entry-footer a:hover,
+.entry-footer a:focus,
+.entry-footer a:hover,
 .entry-footer .cat-links a:focus,
 .entry-footer .cat-links a:hover,
 .entry-footer .date-links a:focus,
 .entry-footer .date-links a:hover,
 .entry-footer .tags-links a:focus,
 .entry-footer .tags-links a:hover,
-.colors-custom .post-navigation a:focus,
-.colors-custom .post-navigation a:hover,
-.colors-custom .pagination a:not(.prev):not(.next):focus,
-.colors-custom .pagination a:not(.prev):not(.next):hover,
-.colors-custom .comments-pagination a:not(.prev):not(.next):focus,
-.colors-custom .comments-pagination a:not(.prev):not(.next):hover,
-.colors-custom .logged-in-as a:focus,
-.colors-custom .logged-in-as a:hover,
-.colors-custom a:focus .nav-title,
-.colors-custom a:hover .nav-title,
-.colors-custom .edit-link a:focus,
-.colors-custom .edit-link a:hover,
-.colors-custom .site-info a:focus,
-.colors-custom .site-info a:hover,
-.colors-custom .widget .widget-title a:focus,
-.colors-custom .widget .widget-title a:hover,
-.colors-custom .widget ul li a:focus,
-.colors-custom .widget ul li a:hover {
+.post-navigation a:focus,
+.post-navigation a:hover,
+.pagination a:not(.prev):not(.next):focus,
+.pagination a:not(.prev):not(.next):hover,
+.comments-pagination a:not(.prev):not(.next):focus,
+.comments-pagination a:not(.prev):not(.next):hover,
+a:focus .nav-title,
+a:hover .nav-title,
+.edit-link a:focus,
+.edit-link a:hover,
+.site-info a:focus,
+.site-info a:hover,
+.widget .widget-title a:focus,
+.widget .widget-title a:hover,
+.widget ul li a:focus,
+.widget ul li a:hover {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 93% ); /* base: #000; */
 }
 
-.colors-custom button,
-.colors-custom input[type="button"],
-.colors-custom input[type="submit"],
-.colors-custom .entry-footer .edit-link a.post-edit-link {
+button,
+input[type="button"],
+input[type="submit"],
+.entry-footer .edit-link a.post-edit-link {
 	background-color: hsl( ' . $hue . ', ' . $saturation . ', 87% ); /* base: #222; */
 }
 
-.colors-custom input[type="text"]:focus,
-.colors-custom input[type="email"]:focus,
-.colors-custom input[type="url"]:focus,
-.colors-custom input[type="password"]:focus,
-.colors-custom input[type="search"]:focus,
-.colors-custom input[type="number"]:focus,
-.colors-custom input[type="tel"]:focus,
-.colors-custom input[type="range"]:focus,
-.colors-custom input[type="date"]:focus,
-.colors-custom input[type="month"]:focus,
-.colors-custom input[type="week"]:focus,
-.colors-custom input[type="time"]:focus,
-.colors-custom input[type="datetime"]:focus,
-.colors-custom .colors-custom input[type="datetime-local"]:focus,
-.colors-custom input[type="color"]:focus,
-.colors-custom textarea:focus,
-.colors-custom input[type="reset"],
 .colors-custom .dropdown-toggle,
 .colors-custom .menu-toggle,
 .page-title,
@@ -116,51 +95,34 @@ a:active,
 	color: hsl( ' . $hue . ', ' . $saturation . ', 87% ); /* base: #222; */
 }
 
-.colors-custom .social-navigation a:hover,
-.colors-custom .social-navigation a:focus {
+.social-navigation a:hover,
+.social-navigation a:focus {
 	background: hsl( ' . $hue . ', ' . $reduced_saturation . ', 80% ); /* base: #333; */
 }
 
-.colors-custom input[type="text"]:focus,
-.colors-custom input[type="email"]:focus,
-.colors-custom input[type="url"]:focus,
-.colors-custom input[type="password"]:focus,
-.colors-custom input[type="search"]:focus,
-.colors-custom input[type="number"]:focus,
-.colors-custom input[type="tel"]:focus,
-.colors-custom input[type="range"]:focus,
-.colors-custom input[type="date"]:focus,
-.colors-custom input[type="month"]:focus,
-.colors-custom input[type="week"]:focus,
-.colors-custom input[type="time"]:focus,
-.colors-custom input[type="datetime"]:focus,
-.colors-custom input[type="datetime-local"]:focus,
-.colors-custom input[type="color"]:focus,
-.colors-custom textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+textarea:focus,
 .bypostauthor > .comment-body > .comment-meta > .comment-author .avatar {
 	border-color: hsl( ' . $hue . ', ' . $reduced_saturation . ', 80% ); /* base: #333; */
 }
 
 .colors-custom h2,
-.colors-custom input[type="text"],
-.colors-custom input[type="email"],
-.colors-custom input[type="url"],
-.colors-custom input[type="password"],
-.colors-custom input[type="search"],
-.colors-custom input[type="number"],
-.colors-custom input[type="tel"],
-.colors-custom input[type="range"],
-.colors-custom input[type="date"],
-.colors-custom input[type="month"],
-.colors-custom input[type="week"],
-.colors-custom input[type="time"],
-.colors-custom input[type="datetime"],
-.colors-custom input[type="datetime-local"],
-.colors-custom input[type="color"],
-.colors-custom textarea,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+textarea,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+textarea:focus,
 .colors-custom .site-description,
 .colors-custom .colors-custom .taxonomy-description,
-.colors-custom .site-info a,
+.site-info a,
 .colors-custom .wp-caption {
 	color: hsl( ' . $hue . ', ' . $saturation . ', 60% ); /* base: #666; */
 }
@@ -187,44 +149,31 @@ a:active,
     text-shadow: 1px 1px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% );
 }
 
-.colors-custom button:hover,
-.colors-custom button:focus,
-.colors-custom input[type="button"]:hover,
-.colors-custom input[type="button"]:focus,
-.colors-custom input[type="submit"]:hover,
-.colors-custom input[type="submit"]:focus,
-.colors-custom .entry-footer .edit-link a.post-edit-link:hover,
-.colors-custom .entry-footer .edit-link a.post-edit-link:focus,
-.colors-custom .social-navigation a,
-.colors-custom .prev.page-numbers:focus,
-.colors-custom .prev.page-numbers:hover,
-.colors-custom .next.page-numbers:focus,
-.colors-custom .next.page-numbers:hover {
+button:hover,
+button:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+.entry-footer .edit-link a.post-edit-link:hover,
+.entry-footer .edit-link a.post-edit-link:focus,
+.social-navigation a,
+.prev.page-numbers:focus,
+.prev.page-numbers:hover,
+.next.page-numbers:focus,
+.next.page-numbers:hover {
 	background: hsl( ' . esc_attr( $hue ) . ', ' . esc_attr( $saturation ) . ', 54% ); /* base: #767676; */
 }
 
-.colors-custom input[type="reset"]:hover,
-.colors-custom input[type="reset"]:focus,
-.colors-custom hr {
+hr {
 	background: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
 
-.colors-custom input[type="text"],
-.colors-custom input[type="email"],
-.colors-custom input[type="url"],
-.colors-custom input[type="password"],
-.colors-custom input[type="search"],
-.colors-custom input[type="number"],
-.colors-custom input[type="tel"],
-.colors-custom input[type="range"],
-.colors-custom input[type="date"],
-.colors-custom input[type="month"],
-.colors-custom input[type="week"],
-.colors-custom input[type="time"],
-.colors-custom input[type="datetime"],
-.colors-custom input[type="datetime-local"],
-.colors-custom input[type="color"],
-.colors-custom textarea,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+textarea,
 .colors-custom select,
 .colors-custom fieldset,
 .colors-custom .widget .tagcloud a:hover,
@@ -246,9 +195,8 @@ a:active,
 	color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
 }
 
-.colors-custom input[type="reset"],
-.colors-custom .prev.page-numbers,
-.colors-custom .next.page-numbers {
+.prev.page-numbers,
+.next.page-numbers {
 	background-color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #ddd; */
 }
 
@@ -315,8 +263,8 @@ ol.comment-list li article,
 
 @media screen and (min-width: 48em) {
 
-	.colors-custom .nav-links .nav-previous .nav-title .icon,
-	.colors-custom .nav-links .nav-next .nav-title .icon {
+	.nav-links .nav-previous .nav-title .icon,
+	.nav-links .nav-next .nav-title .icon {
 		color: hsl( ' . $hue . ', ' . $saturation . ', 80% ); /* base: #222; */
 	}
 

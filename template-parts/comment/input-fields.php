@@ -6,7 +6,14 @@
 ?>
 <div id="respond" class="comment-respond">
 <h3 id="reply-title" class="comment-reply-title">
-<?php global $post; ?>
+<?php 
+    global $post;
+    $thumbnail_src = skywarp2_get_thumbnail_str();
+    if ( $thumbnail_src )
+    {
+        $form_style = "style= ' background: #fff url(\"".$thumbnail_src." \") repeat scroll center center ;'";
+    }
+?>
 <?php comment_form_title( '', '%s' ); ?>
 <small>
 <?php cancel_comment_reply_link( '取消' ); ?>
@@ -25,7 +32,7 @@
     <p class="comment-form-email"><input id="email" name="email" type="email"  size="30" placeholder="邮箱（必填，保密）" value="<?php echo esc_attr($email); ?>" maxlength="100" aria-describedby="email-notes" aria-required='true' required='required' /></p>
     <p class="comment-form-url"><input id="url" name="url" type="url"  size="30" placeholder="网址（选填）" value="<?php echo esc_attr($url); ?>" maxlength="200" /></p>
 <?php endif; ?>
-<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" placeholder="请不要留下无趣的东西浪费大家时间。" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="form-submit">
+<p class="comment-form-comment" <?php if ($form_style) { echo $form_style; } ?> ><textarea id="comment" name="comment" cols="45" rows="8" placeholder="请不要留下无趣的东西浪费大家时间。" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="form-submit">
 <input name="submit" type="submit" id="submit" class="submit" value="Post Comment" />
 <input type='hidden' name='comment_post_ID' value='<?php echo esc_attr($post->ID); ?>' id='comment_post_ID' />
 <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
