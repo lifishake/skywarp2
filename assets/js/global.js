@@ -3,25 +3,9 @@
 
 	// Variables and DOM Caching.
 	var $body = $( 'body' ),
-		$customHeader = $body.find( '.custom-header' ),
-		$branding = $customHeader.find( '.site-branding' ),
 		$navigation = $body.find( '.navigation-top' ),
-		$navWrap = $navigation.find( '.wrap' ),
-		$navMenuItem = $navigation.find( '.menu-item' ),
-		$menuToggle = $navigation.find( '.menu-toggle' ),
 		$menuScrollUp = $body.find( '.menu-scroll-up' ),
-		$entryContent = $body.find( '.entry-content' ),
-		isFrontPage = $body.hasClass( 'home blog' ),
 		navigationFixedClass = 'site-navigation-fixed',
-		navigationHeight,
-		navigationOuterHeight,
-		navPadding,
-		navMenuItemHeight,
-		idealNavHeight,
-		navIsNotTooTall,
-		headerOffset,
-		menuTop = 0,
-		resizeTimer;
 
 	// Ensure the sticky navigation doesn't cover current focused links.
 	$( 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex], [contenteditable]', '.site-content-contain' ).filter( ':visible' ).focus( function() {
@@ -42,62 +26,13 @@
 		}
 	});
 
-	// Set properties of navigation.
-	function setNavProps() {
-		navigationHeight      = $navigation.height();
-		navigationOuterHeight = $navigation.outerHeight();
-		navPadding            = parseFloat( $navWrap.css( 'padding-top' ) ) * 2;
-		navMenuItemHeight     = $navMenuItem.outerHeight() * 2;
-		idealNavHeight        = navPadding + navMenuItemHeight;
-		navIsNotTooTall       = navigationHeight <= idealNavHeight;
-		if ( 'none' !== $menuToggle.css( 'display' ) )
-		{
-			navIsNotTooTall = true;
-			navigationOuterHeight = navigationHeight;
-		}
-	}
-
 	// Make navigation 'stick'.
 	function adjustScrollClass() {
 
-		// Make sure the nav isn't taller than two rows.
-		if ( navIsNotTooTall ) {
-
-			// When there's a custom header image or video, the header offset includes the height of the navigation.
-			if ( isFrontPage && ( $body.hasClass( 'has-header-image' ) ) ) {
-				headerOffset = $customHeader.innerHeight() - navigationOuterHeight;
-			} else {
-				headerOffset = $customHeader.innerHeight();
-			}
-
-			// If the scroll is more than the custom header, set the fixed class.
-			if ( $( window ).scrollTop() >= headerOffset ) {
-				$navigation.addClass( navigationFixedClass );
-			} else {
-				$navigation.removeClass( navigationFixedClass );
-			}
-
+		if ( $( window ).scrollTop() >= $customHeader.innerHeight() ) {
+			$navigation.addClass( navigationFixedClass );
 		} else {
-
-			// Remove 'fixed' class if nav is taller than two rows.
 			$navigation.removeClass( navigationFixedClass );
-		}
-	}
-
-	// Set margins of branding in header.
-	function adjustHeaderHeight() {
-		if ( 'none' === $menuToggle.css( 'display' ) ) {
-
-			// The margin should be applied to different elements on front-page or home vs interior pages.
-			if ( isFrontPage ) {
-				$branding.css( 'margin-bottom', navigationOuterHeight );
-			} else {
-				$customHeader.css( 'margin-bottom', navigationOuterHeight );
-			}
-
-		} else {
-			$customHeader.css( 'margin-bottom', '0' );
-			$branding.css( 'margin-bottom', '0' );
 		}
 	}
 
@@ -123,33 +58,21 @@
 
 		// If navigation menu is present on page, setNavProps and adjustScrollClass.
 		if ( $navigation.length ) {
-			setNavProps();
 			adjustScrollClass();
 		}
 
 		// If 'Scroll Down' arrow in present on page, calculate scroll offset and bind an event handler to the click event.
 		if ( $menuScrollUp.length ) {
 
-			if ( $( 'body' ).hasClass( 'admin-bar' ) ) {
-				menuTop -= 32;
-			}
-			if ( $( 'body' ).hasClass( 'blog' ) ) {
-				menuTop -= 30; // The div for latest posts has no space above content, add some to account for this.
-			}
-			if ( ! $navigation.length ) {
-				navigationOuterHeight = 0;
-			}
-
 			$menuScrollUp.click( function( e ) {
 				e.preventDefault();
-				$( window ).scrollTo( '#primary', {
-					duration: 600,
-					offset: { top: menuTop - navigationOuterHeight }
+				$( window ).scrollTo( '#masthead', {
+					duration: 800,
+					offset: { bottom: 10 }
 				});
 			});
 		}
 
-		adjustHeaderHeight();
 		if ( true !== supportsInlineSVG() ) {
 			document.documentElement.className = document.documentElement.className.replace( /(\s*)svg(\s*)/, '$1no-svg$2' );
 			$('#svg-warnning').removeClass('hidden');
@@ -166,18 +89,12 @@
 		// On scroll, we want to stick/unstick the navigation.
 		$( window ).on( 'scroll', function() {
 			adjustScrollClass();
-			adjustHeaderHeight();
 		});
 
 		// Also want to make sure the navigation is where it should be on resize.
 		$( window ).resize( function() {
-			setNavProps();
 			setTimeout( adjustScrollClass, 500 );
 		});
 	}
-
-	$( window ).resize( function() {
-		setTimeout( adjustHeaderHeight, 1000 );
-	});
 
 })( jQuery );

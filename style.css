@@ -1114,8 +1114,6 @@ html {
 .site-branding {
 	padding: 1em 0;
 	position: relative;
-	-webkit-transition: margin-bottom 0.2s;
-	transition: margin-bottom 0.2s;
 	z-index: 3;
 }
 
@@ -1179,6 +1177,7 @@ html {
 
 .custom-header {
 	position: relative;
+	/*margin-bottom: 72px;*/
 }
 
 .has-header-image.home.blog .custom-header {
@@ -2534,7 +2533,6 @@ object {
 		font-size: 14px;
 		font-size: 0.875rem;
 		left: 0;
-		position: absolute;
 		right: 0;
 		width: 100%;
 		z-index: 3;
@@ -2753,18 +2751,14 @@ object {
 
 	/* Front Page */
 
-	.home.blog.has-header-image .site-branding {
-		margin-bottom: 70px;
-	}
-
 	.home.blog.has-header-image .custom-header-media {
-		height: 400px;
+		height: 197px;
 		max-height: 100%;
 		overflow: hidden;
 	}
 
 	.admin-bar.home.blog.has-header-image .custom-header-media {
-		height: 368px;
+		height: 165px;
 	}
 
 	/* Posts */
