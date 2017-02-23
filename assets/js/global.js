@@ -9,9 +9,8 @@
 		$navWrap = $navigation.find( '.wrap' ),
 		$navMenuItem = $navigation.find( '.menu-item' ),
 		$menuToggle = $navigation.find( '.menu-toggle' ),
-		$menuScrollDown = $body.find( '.menu-scroll-down' ),
+		$menuScrollUp = $body.find( '.menu-scroll-up' ),
 		$entryContent = $body.find( '.entry-content' ),
-		$formatQuote = $body.find( '.format-quote blockquote' ),
 		isFrontPage = $body.hasClass( 'home blog' ),
 		navigationFixedClass = 'site-navigation-fixed',
 		navigationHeight,
@@ -102,11 +101,6 @@
 		}
 	}
 
-	// Set icon for quotes.
-	function setQuotesIcon() {
-		$( sw2ScreenReaderText.quote ).prependTo( $formatQuote );
-	}
-
 	/*
 	 * Test if inline SVGs are supported.
 	 * @link https://github.com/Modernizr/Modernizr/
@@ -124,27 +118,6 @@
 		return /iPad|iPhone|iPod/.test(navigator.userAgent) && ! window.MSStream;
 	}
 
-	/*
-	 * Test if background-attachment: fixed is supported.
-	 * @link http://stackoverflow.com/questions/14115080/detect-support-for-background-attachment-fixed
-	 */
-	function supportsFixedBackground() {
-		var el = document.createElement('div'),
-			isSupported;
-
-		try {
-			if ( ! ( 'backgroundAttachment' in el.style ) || checkiOS() ) {
-				return false;
-			}
-			el.style.backgroundAttachment = 'fixed';
-			isSupported = ( 'fixed' === el.style.backgroundAttachment );
-			return isSupported;
-		}
-		catch (e) {
-			return false;
-		}
-	}
-
 	// Fire on document ready.
 	$( document ).ready( function() {
 
@@ -155,7 +128,7 @@
 		}
 
 		// If 'Scroll Down' arrow in present on page, calculate scroll offset and bind an event handler to the click event.
-		if ( $menuScrollDown.length ) {
+		if ( $menuScrollUp.length ) {
 
 			if ( $( 'body' ).hasClass( 'admin-bar' ) ) {
 				menuTop -= 32;
@@ -167,7 +140,7 @@
 				navigationOuterHeight = 0;
 			}
 
-			$menuScrollDown.click( function( e ) {
+			$menuScrollUp.click( function( e ) {
 				e.preventDefault();
 				$( window ).scrollTo( '#primary', {
 					duration: 600,
@@ -177,14 +150,14 @@
 		}
 
 		adjustHeaderHeight();
-		setQuotesIcon();
-		if ( true === supportsInlineSVG() ) {
-			document.documentElement.className = document.documentElement.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
+		if ( true !== supportsInlineSVG() ) {
+			document.documentElement.className = document.documentElement.className.replace( /(\s*)svg(\s*)/, '$1no-svg$2' );
+			$('#svg-warnning').removeClass('hidden');
+			$('#svg-warnning').fadeOut(5000, function(){
+				$('#svg-warnning').addClass('hidden');
+			});
 		}
 
-		if ( true === supportsFixedBackground() ) {
-			document.documentElement.className += ' background-fixed';
-		}
 	});
 
 	// If navigation menu is present on page, adjust it on scroll and screen resize.

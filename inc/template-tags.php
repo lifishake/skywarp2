@@ -1,8 +1,6 @@
 <?php
 /**
- * Custom template tags for this theme
- *
- * Eventually, some of the functionality here could be replaced by core features.
+ * 自定义模板功能
  *
  * @package WordPress
  * @subpackage SkyWarp2
@@ -47,6 +45,10 @@ function skywarp2_archive_title() {
 	echo $out ;
 }
 
+/**
+ * 作用: 取得category路径
+ * 来源: 破袜子原创
+ */
 function skywarp2_get_categories_trace(){
 	if ( !is_single() && !is_category() ||is_attachment() )
 	{
@@ -62,6 +64,10 @@ function skywarp2_get_categories_trace(){
 	return $return;
 }
 
+/**
+ * 作用: 显示category面包屑(屏幕输出)
+ * 来源: 破袜子原创
+ */
 function skywarp2_breadcrumb_category(){
 	if ( !is_category() ){
 		return ;
@@ -71,6 +77,10 @@ function skywarp2_breadcrumb_category(){
 	echo '<div class="taxonomy-description"><span class="header-breadcrumb">'.$home.' &raquo; '.$categories.'</span></div>';
 }
 
+/**
+ * 作用: 取得日期追踪。因为一日多篇的情况比较少见，所以取到月。
+ * 来源: 破袜子原创
+ */
 function skywarp2_get_dates_trace(){
 	if ( !is_single() && !is_date() ||is_attachment() )
 	{
@@ -78,10 +88,14 @@ function skywarp2_get_dates_trace(){
 	}
 	$archive_year  = get_the_time('Y'); 
 	$archive_month = get_the_time('m');
-	$return = sprintf('<a href="%1$s">%2$s</a> / <a href="%3$s">%4$s</a>', get_year_link($archive_year), $archive_year, get_month_link($archive_year, $archive_month), $archive_month );
+	$return = sprintf('<a href="%1$s">%2$s</a>年<a href="%3$s">%4$s</a>月', get_year_link($archive_year), $archive_year, get_month_link($archive_year, $archive_month), $archive_month );
 	return $return;
 }
 
+/**
+ * 作用: 显示日期面包屑。(屏幕输出)
+ * 来源: 破袜子原创
+ */
 function skywarp2_breadcrumb_date(){
 	if ( !is_date() ){
 		return ;
@@ -91,6 +105,11 @@ function skywarp2_breadcrumb_date(){
 	echo '<div class="taxonomy-description"><span class="header-breadcrumb">'.$home.' &raquo; '.$date.'</span></div>';
 }
 
+/**
+ * 作用: 显示面包屑。目前支持category和date。
+ * 返回值: string
+ * 来源: 破袜子原创
+ */
 function skywarp2_breadcrumb(){
 	if ( is_date() ){
 		skywarp2_breadcrumb_date();
@@ -103,6 +122,15 @@ function skywarp2_breadcrumb(){
 	}
 }
 
+/**
+ * 作用: 进行时间比较。
+ * 参数: $from string 开始时间
+ * 参数: $to string 结束时间
+ * 参数: $before string 前修饰文字
+ * 参数: $after string 后修饰文字
+ * 返回值: string
+ * 来源: 破袜子原创
+ */
 function skywarp2_timediff( $from, $to, $before, $after) {
 	if ( empty($from) || empty($to) )
 		return '';
@@ -137,6 +165,11 @@ function skywarp2_timediff( $from, $to, $before, $after) {
 	return $return;
 }
 
+/**
+ * 作用: 取得文章发表的相对时间。
+ * 返回值: string
+ * 来源: 破袜子原创
+ */
 function skywarp2_rel_post_date() {
 	global $post;
 	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
@@ -145,6 +178,11 @@ function skywarp2_rel_post_date() {
 	return skywarp2_timediff( $post_date_time, $date_today_time ,'&nbsp;','前' ) ;
 }
 
+/**
+ * 作用: 取得评论发表的相对时间。
+ * 返回值: string
+ * 来源: 破袜子原创
+ */
 function skywarp2_rel_comment_date() {
 	global $post , $comment;
 	$post_date_time = mysql2date('j-n-Y H:i:s', $post->post_date, false);
@@ -152,6 +190,11 @@ function skywarp2_rel_comment_date() {
 	return skywarp2_timediff( $post_date_time, $comment_date_time ,'&nbsp;','后' ) ;
 }
 
+/**
+ * 作用: 取得时间文字。
+ * 返回值: string
+ * 来源: 破袜子原创
+ */
 function skywarp2_time_link() {
 	$time_string = '<span class="calendar-desc">%1$s<time class="entry-date published updated" datetime="%2$s">%3$s</time></span>';
 
@@ -161,13 +204,13 @@ function skywarp2_time_link() {
 		skywarp2_rel_post_date()
 	);
 
-	// Wrap the time string in a link, and preface it with 'Posted on'.
-	return sprintf(
-		/* translators: %s: post date */
-		'<span class="screen-reader-text">Posted on</span> %s', $time_string
-	);
+	return $time_string;
 }
 
+/**
+ * 作用: 显示文章头信息。(屏幕输出)
+ * 来源: 破袜子原创
+ */
 function skywarp2_entry_meta(){
 	$has_edit_link = true;
 	$all_meta = '';
@@ -208,20 +251,18 @@ function skywarp2_entry_meta(){
 	}
 	echo $all_meta;
 	if ( $has_edit_link ) {
-		sw2_edit_link();
+		skywarp2_edit_link();
 	}
 }
 
-if ( ! function_exists( 'twentyseventeen_entry_footer' ) ) :
 /**
- * Prints HTML with meta information for the categories, tags and comments.
+ * 作用: 显示文章脚信息。(屏幕输出)
+ * 来源: 破袜子原创
  */
-function twentyseventeen_entry_footer() {
+function skywarp2_entry_footer() {
 
-	// Get Tags for posts.
 	$tags_list = get_the_tag_list( '', ', ' );
 
-	// We don't want to output .entry-footer if it will be empty, so make sure its not.
 	if ( ( $categories_list || $tags_list ) || get_edit_post_link() ) {
 
 		echo '<footer class="entry-footer">';
@@ -230,11 +271,11 @@ function twentyseventeen_entry_footer() {
 					get_template_part( 'template-parts/post/meta', 'license' );
 				}
 				echo '<span class="cat-tags-links">';
-
-					// Make sure there's more than one category before displaying.
+					//日期
 					echo '<span class="date-links">' . sw2_get_svg( array( 'icon' => 'calendar' ) ) . skywarp2_get_dates_trace() . '</span>';
+					//类别
 					echo '<span class="cat-links">' . sw2_get_svg( array( 'icon' => 'folder-open' ) ) . skywarp2_get_categories_trace() . '</span>';
-
+					//标签
 					if ( $tags_list ) {
 						echo '<span class="tags-links">' . sw2_get_svg( array( 'icon' => 'hashtag' ) ) . $tags_list . '</span>';
 					}
@@ -242,14 +283,17 @@ function twentyseventeen_entry_footer() {
 				echo '</span>';
 			}
 
-			sw2_edit_link();
+			skywarp2_edit_link();
 
 		echo '</footer> <!-- .entry-footer -->';
 	}
 }
-endif;
 
-function sw2_edit_link() {
+/**
+ * 作用: 显示编辑链接。(屏幕输出)
+ * 来源: 破袜子原创
+ */
+function skywarp2_edit_link() {
 
 	$link = edit_post_link(
 		'编辑',
@@ -258,4 +302,40 @@ function sw2_edit_link() {
 	);
 
 	return $link;
+}
+
+
+function skywarp2_utf8_trim($str) {
+
+    $len = strlen($str);
+
+    for ($i=strlen($str)-1; $i>=0; $i-=1){
+        $hex .= ' '.ord($str[$i]);
+        $ch = ord($str[$i]);
+        if (($ch & 128)==0) return(substr($str,0,$i));
+        if (($ch & 192)==192) return(substr($str,0,$i));
+    }
+    return($str.$hex);
+}
+
+function the_skywarp2_excerpt(){
+	if ( !is_search() ) {
+		the_excerpt();
+		return;
+	}
+	$keyword = get_search_query();
+	$text = get_the_content();
+	$text = strip_shortcodes($text);
+    $text = str_replace( ']]>', ']]&gt;', $text );
+    $text = strip_tags( $text );
+    $pos = mb_stripos( $text, $keyword,0,'utf-8' );
+    if ( $pos > 12 ){
+    	$return = mb_substr($text,$pos-10,50,'utf-8').'...';
+    }
+    else {
+    	$return = mb_substr($text,0,50,'utf-8').'...'
+;
+    }
+    $return = mb_ereg_replace($keyword, '<span class="highlight">'.$keyword.'</span>', $return);
+    echo $return;
 }

@@ -12,4 +12,5 @@
 <div class="site-info">
     <?php echo (' &copy; 2005-'.date('Y').' 破袜子&nbsp;&nbsp;主题：'); ?>
 	<a href="https://github.com/lifishake/skywarp2">skywarp2</a>
-</div><!-- .site-info -->
+</div>
+<!-- .site-info -->

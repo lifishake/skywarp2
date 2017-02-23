@@ -27,6 +27,6 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
-	<?php twentyseventeen_entry_footer(); ?>
+	<?php skywarp2_entry_footer(); ?>
 
 </article><!-- #post-## -->

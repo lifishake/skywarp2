@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays header media
+ * 显示头图片和网站名
  *
  * @package WordPress
  * @subpackage SkyWarp2

@@ -17,7 +17,7 @@
 		'menu_id'        => 'top-menu',
 	) ); ?>
 
-	<?php if ( is_singular() && has_custom_header() ) : ?>
-		<a href="#content" class="menu-scroll-down"><?php echo sw2_get_svg( array( 'icon' => 'arrow-right' ) ); ?><span class="screen-reader-text"><?php echo( '跳至正文' ); ?></span></a>
+	<?php if ( has_custom_header() ) : ?>
+		<a href="" rel="tohead" class="menu-scroll-up"><?php echo sw2_get_svg( array( 'icon' => 'square-up' ) ); ?><span class="screen-reader-text"><?php echo( '回到顶部' ); ?></span></a>
 	<?php endif; ?>
 </nav><!-- #site-navigation -->

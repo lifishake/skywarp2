@@ -11,7 +11,7 @@
     $thumbnail_src = skywarp2_get_thumbnail_str();
     if ( $thumbnail_src )
     {
-        $form_style = "style= ' background: #fff url(\"".$thumbnail_src." \") repeat scroll center center ;'";
+        $form_style = "style= ' background: #fff url(\"".$thumbnail_src." \") no-repeat center center ; background-size: 100%, auto;'";
     }
 ?>
 <?php comment_form_title( '', '%s' ); ?>

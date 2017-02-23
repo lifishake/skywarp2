@@ -14,6 +14,7 @@
 3. 不支持wp_link_pages（）函数。有文章内部分页需求的人请勿使用本主题。
 4. 不支持页面作为front_page
 5. 不支持sidebar
+6. 不支持原生媒体应用，报告嵌入音频视频，相册等。
 
 # IV. 版本历史 #
 
@@ -21,5 +22,14 @@
 
 - 初版，基于twentyseventeen
 
-css
-index
+
+## 2017/2/22 0.80 ##
+
+- 基本去除twentyseventeen痕迹，可以正式应用。
+- 增加了对不支持svg的浏览器的警告。（增加browser-warnning.php）
+- 删除editor-style.css
+
+## 2017/2/23 0.81 ##
+
+- search页增加关键字高亮。
+- BY_CC_ND图片换成base64的背景。

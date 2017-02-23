@@ -109,6 +109,7 @@ textarea:focus,
 	border-color: hsl( ' . $hue . ', ' . $reduced_saturation . ', 80% ); /* base: #333; */
 }
 
+span.highlight,
 .colors-custom h2,
 input[type="text"],
 input[type="email"],
@@ -132,6 +133,7 @@ textarea:focus,
 	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 60% ); /* base: #666; */
 }
 
+.navigation-top .menu-scroll-up,
 .colors-custom h5,
 .entry-meta,
 .entry-meta a,
@@ -254,9 +256,9 @@ ol.comment-list li article,
 .colors-custom .menu-toggle:hover,
 .colors-custom .menu-toggle:focus,
 .colors-custom .menu .dropdown-toggle,
-.colors-custom .menu-scroll-down,
-.colors-custom .menu-scroll-down:hover,
-.colors-custom .menu-scroll-down:focus {
+.menu-scroll-up,
+.menu-scroll-up:hover,
+.menu-scroll-up:focus {
 	background-color: transparent;
 }
 
@@ -271,10 +273,6 @@ ol.comment-list li article,
 	.colors-custom .main-navigation li li:hover,
 	.colors-custom .main-navigation li li.focus {
 		background: hsl( ' . $hue . ', ' . $saturation . ', 54% ); /* base: #767676; */
-	}
-
-	.colors-custom .navigation-top .menu-scroll-down {
-		color: hsl( ' . $hue . ', ' . $saturation . ', 54% ); /* base: #767676; */;
 	}
 
 	.colors-custom abbr[title] {

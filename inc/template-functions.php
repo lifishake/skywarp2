@@ -44,7 +44,7 @@ function skywarp2_get_thumbnail_str() {
         $post_image_id = get_post_thumbnail_id($post_to_use->ID);
         if ($post_image_id) 
         {
-            $thumbnail = wp_get_attachment_image_src( $post_image_id, 'post-thumbnail'/*skywarp2-featured-image*/, false);
+            $thumbnail = wp_get_attachment_image_src( $post_image_id, 'skywarp2-featured-image'/*skywarp2-featured-image*/, false);
             if ($thumbnail) (string)$thumbnail = $thumbnail[0];
 		}
 	endif;

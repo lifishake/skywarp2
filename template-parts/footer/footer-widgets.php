@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays footer widgets if assigned
+ * 显示已注册的页脚小工具
  *
  * @package WordPress
  * @subpackage SkyWarp2
