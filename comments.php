@@ -23,8 +23,8 @@ if ( post_password_required() ) {
         ?>
 			<?php printf('已有%1$s条评论', get_comments($comment_arg) ); ?>
 		</h2>
-
-		<?php get_template_part( 'template-parts/comment/list', 'single' ); ?>
+		<?php get_template_part( 'template-parts/comment/list', 'grasp' ); ?>
+		<?php get_template_part( 'template-parts/comment/list', is_page()?'single':'single' ); ?>
 
 		<?php the_comments_pagination( array(
 			'prev_text' => sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">前一页</span>',

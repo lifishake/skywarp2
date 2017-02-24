@@ -5,7 +5,7 @@
 	var $body = $( 'body' ),
 		$navigation = $body.find( '.navigation-top' ),
 		$menuScrollUp = $body.find( '.menu-scroll-up' ),
-		navigationFixedClass = 'site-navigation-fixed',
+		navigationFixedClass = 'site-navigation-fixed';
 
 	// Ensure the sticky navigation doesn't cover current focused links.
 	$( 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex], [contenteditable]', '.site-content-contain' ).filter( ':visible' ).focus( function() {
@@ -29,7 +29,7 @@
 	// Make navigation 'stick'.
 	function adjustScrollClass() {
 
-		if ( $( window ).scrollTop() >= $customHeader.innerHeight() ) {
+		if ( $( window ).scrollTop() >= $('#content').offset().top ) {
 			$navigation.addClass( navigationFixedClass );
 		} else {
 			$navigation.removeClass( navigationFixedClass );
