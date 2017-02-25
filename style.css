@@ -55,6 +55,23 @@ hue:277;
 1.0 Normalize
 Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
 --------------------------------------------------------------*/
+@font-face{				
+  font-family:'seber';	/*自定义字体名字*/
+  src: url('./assets/fonts/seber.eot');	/*IE9.0+*/
+  src: url('./assets/fonts/seber.eot?#iefix') format('embedded-opentype'),/*IE6-8*/
+  url('./assets/fonts/seber.woff2') format('woff2'),/*???*/
+  url('./assets/fonts/seber.woff?') format('woff'),/*大多数*/
+  url('./assets/fonts/seber.ttf') format('truetype'), /*Safari, Android, iOS*/
+  url('./assets/fonts/seber.svg') format('svg'); /*少数浏览器*/
+  font-weight: normal;
+  font-style: normal;
+}
+
+.site-title,
+.site-description{		/*要修改的属性*/
+	font-family:seber; /*自定义的字体名*/
+}
+
 
 html {
 	font-family: Helvetica, Arial, Calibri, Avenir, 'Lucida Grande',STHeitiTC-Light,"PingFang TC", "Helvetica Neue", 'Microsoft YaHei', 'Hiragino Sans GB','Microsoft JhengHei', NSimSun, SimSun, SimHei, STXihei, STHeiti, sans-serif;
