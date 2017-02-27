@@ -10,7 +10,6 @@
 
 ?>
 <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Top Menu">
-    <div class="navigation-logo"><span class="noselect" ><?php bloginfo( 'name' );?></span></div>
 	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php echo sw2_get_svg( array( 'icon' => 'bars' ) ); echo sw2_get_svg( array( 'icon' => 'close' ) ); ?></button>
 	<?php wp_nav_menu( array(
 		'theme_location' => 'top',

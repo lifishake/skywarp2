@@ -82,6 +82,7 @@ input[type="submit"],
 	background-color: hsl( ' . $hue . ', ' . $saturation . ', 87% ); /* base: #222; */
 }
 
+.site-navigation-fixed.navigation-top:before,
 .colors-custom .dropdown-toggle,
 .colors-custom .menu-toggle,
 .page-title,
@@ -189,6 +190,10 @@ textarea,
 
 .colors-custom thead th {
 	border-bottom-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #bbb; */
+}
+
+.site-navigation-fixed.navigation-top:before {
+	content: \''. get_bloginfo('name') .'\';
 }
 
 .entry-footer .cat-links .icon,

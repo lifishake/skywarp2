@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts
+ * 显示内容模块
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -14,6 +14,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
+		/* 置顶图标 */
 		if ( is_sticky() && is_home() ) :
 			echo sw2_get_svg( array( 'icon' => 'thumb-tack' ) );
 		endif;

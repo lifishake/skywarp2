@@ -67,12 +67,6 @@ Styles based on Normalize v5.0.0 @link https://github.com/necolas/normalize.css
   font-style: normal;
 }
 
-.site-title,
-.site-description{		/*要修改的属性*/
-	font-family:seber; /*自定义的字体名*/
-}
-
-
 html {
 	font-family: Helvetica, Arial, Calibri, Avenir, 'Lucida Grande',STHeitiTC-Light,"PingFang TC", "Helvetica Neue", 'Microsoft YaHei', 'Hiragino Sans GB','Microsoft JhengHei', NSimSun, SimSun, SimHei, STXihei, STHeiti, sans-serif;
 	line-height: 1.15;
@@ -894,6 +888,22 @@ a .nav-title,
 	text-align: left;
 }
 
+.site-navigation-fixed.navigation-top:before {
+	position: inherit;
+	content: "";
+	font-family: seber;
+	font-size: 20px;
+	margin: auto 0.5em;
+	padding: 0.5em 5em 0.75em 0.5em;
+	left:0;
+	color: #FF8000;
+	z-index: -1;
+}
+
+.site-navigation-fixed.navigation-top >.toggled-on:before {
+	content: "";
+}
+
 /* Hide the menu on small screens when JavaScript is available.
  * It only works with JavaScript.
  */
@@ -962,41 +972,20 @@ a .nav-title,
 	font-size: 1rem;
 	font-weight: 800;
 	line-height: 1.5;
-	margin: 1px auto 2px;
-	padding: 1em 48% 1em 1em;
-	padding: 1em 48vw 1em 1em;
+	margin: auto;
 	text-shadow: none;
-	float: right;
-}
-
-.navigation-logo {
-	background-color: transparent;
-	border: 0;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	color: #EEE;
-	display: none;
-	font-size: 18px;
-	font-size: 1rem;
-	font-weight: 800;
-	line-height: 1.5;
-	margin: 1px auto 2px;
-	padding: 1em;
-	text-shadow: none;
+	/*float: right;*/
 }
 
 /* Display the menu toggle when JavaScript is available. */
-.js .site-navigation-fixed .navigation-logo,
 .js .menu-toggle {
-	display: inline-block;
+	display: inherit;
 }
 
 .main-navigation.toggled-on ul.nav-menu {
 	display: block;
 }
 
-.navigation-logo:hover,
-.navigation-logo:focus,
 .menu-toggle:hover,
 .menu-toggle:focus {
 	background-color: transparent;
@@ -1004,7 +993,6 @@ a .nav-title,
 	box-shadow: none;
 }
 
-.navigation-logo:focus,
 .menu-toggle:focus {
 	outline: thin solid;
 }
@@ -1146,6 +1134,7 @@ html {
 }
 
 .site-title {
+    font-family: seber;
 	clear: none;
 	font-size: 24px;
 	font-size: 1.5rem;
@@ -1163,6 +1152,7 @@ html {
 }
 
 .site-description {
+    font-family: seber;
 	font-size: 13px;
 	font-size: 0.8125rem;
 	margin-bottom: 0;
@@ -2571,12 +2561,17 @@ object {
 		left: 0;
 		right: 0;
 		top: 0;
+		padding-left:4em;
 		width: 100%;
 		z-index: 7;
 	}
 
-	.js .site-navigation-fixed .navigation-logo {
-		display: none;
+	.site-navigation-fixed.navigation-top:before {
+		padding-top: 0.9em;
+	}
+
+	.site-navigation-fixed .warp{
+		margin-left: 8.125em;
 	}
 
 	.admin-bar .site-navigation-fixed.navigation-top {
@@ -2585,7 +2580,6 @@ object {
 
 	/* Main Navigation */
 
-	.js .navigation-logo,
 	.js .menu-toggle,
 	.js .dropdown-toggle {
 		display: none;
@@ -2999,6 +2993,10 @@ object {
 
 	.navigation-top nav {
 		margin-left: 0;
+	}
+
+	.site-navigation-fixed.navigation-top {
+		padding-left: 0.75em;
 	}
 
 	/* Sticky posts */
