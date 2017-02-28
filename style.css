@@ -1939,6 +1939,24 @@ ol.comment-list li article{
 	text-align: right;
 }
 
+.form_row {
+	margin: 0.5em 0 1em;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.form_row input[type="button"] {
+	padding: 0.5em 1em;
+	font-size: 12px !important;
+	background-color: transparent;
+	border: 1px #555 dotted;
+}
+
+.show-form {
+    cursor: pointer;
+    color: #e5e5e5;
+}
+
 /*--------------------------------------------------------------
 15.0 Widgets
 --------------------------------------------------------------*/
@@ -1965,7 +1983,6 @@ h2.widget-title {
 .widget select {
 	width: 100%;
 }
-
 
 /* widget lists */
 

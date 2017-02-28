@@ -133,12 +133,3 @@ jQuery(document).ready(function(jQuery) {
 		}
 	};
 });
-
-jQuery(document).on('click', '.show-form', 
-function() {
-	jQuery('#author_info').toggle(300);
-});
-
-function ToggleCommentForm(){
-	jQuery('#author_info').toggle(10);
-}

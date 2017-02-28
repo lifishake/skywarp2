@@ -4,7 +4,7 @@
  * ajax_comment后的回调函数，以及自定义的comment回调显示函数。
  * 自定义comment回调的原因是看原版显示格式不顺眼。
  * 本文件原型来自大发提供的do.php，有大幅度增删改。原始URL：https://fatesinger.com/59
- * @package bluefly
+ * @package skywarp2
  */
  
 //追加回调入口
@@ -126,7 +126,7 @@ function skywarp2_newcomment( $is_grasp ) {
  * 作用: 无诚意留言的回调显示
  * 来源: 破袜子原创
  */
-function bluefly_additional_grasp_show($email) {
+function skywarp2_additional_grasp_show($email) {
 	?>
     <li class= "grasp sensele">
 	<div class="comment-grasp vcard">
@@ -141,7 +141,7 @@ function bluefly_additional_grasp_show($email) {
  * 作用: 留言的回调显示
  * 来源: 破袜子原创
  */
-function bluefly_additional_comment_show($email) {
+function skywarp2_additional_comment_show($email) {
 	?>
     <li <?php comment_class(); ?>>
         <article class="comment-body">
@@ -176,11 +176,11 @@ function ajax_comment_callback(){
 	$comment_author_email ;
 	if ( false==(bool)$is_grasp ) {
 		$comment_author_email = skywarp2_newcomment( false );
-		bluefly_additional_comment_show($comment_author_email); 
+		skywarp2_additional_comment_show($comment_author_email); 
 	}
 	else {
 		$comment_author_email = skywarp2_newcomment( true );
-		bluefly_additional_grasp_show($comment_author_email); 
+		skywarp2_additional_grasp_show($comment_author_email); 
 	}
     die();
 }
@@ -194,64 +194,4 @@ function ajax_comment_err($a) {
     header('Content-Type: text/plain;charset=UTF-8');
     echo $a;
     exit;
-}
-
-/**
- * 作用: 追加【已阅】按钮
- * 来源: 破袜子原创
- */
- 
- //把按钮通过WP自带的钩子追加到默认的留言模板上。
- //【comment_form_defaults】是“提交留言”按钮，类型是submit。默认加到它的后面。
- //add_filter('comment_form_defaults' , 'add_senseless_btn', 40);
-function add_senseless_btn( $defaults )
-{
-	if ( is_page() )
-		return $defaults;
-	//type定义成button，因为不提倡有两个submit。通过CSS使两个按钮看起来一致。
-	$notice = '<input id="grasp" class="submit" type="button" value="路过" name="grasp">';
-	$defaults['submit_button'] = $notice.$defaults['submit_button'];
-	return $defaults;
-}
-
-/**
- * 作用: 无诚意留言列表.调用WP函数
- * 来源: 破袜子原创
- */
-function bluefly_get_grasp_list()
-{
-	if ( !is_single() )
-		return;
-	?>
-	<div class="no-order">
-	<div class="assistive-text noselect"><i class="fa fa-arrow-down"></i> 看过但不讲话的人 <i class="fa fa-arrow-down"></i></div>
-	<ol class="grasp-list">
-	<?php
-		//通过指定回调函数grasp_lists达到只显示头像的目的。
-		wp_list_comments(array(
-					'style'      => 'ol',
-					'avatar_size'=> 32,
-					'type'=>'senseless',
-					'per_page' => 30 ,
-					'callback'=>'grasp_lists',
-					'reverse_top_level'=>false,
-				));
-	?>
-	</ol>	
-	</div><!-- .no-order -->
-	<?php
-}
-
-/**
- * 作用: 无诚意头像列表.显示部分
- * 来源: 破袜子原创
- */
-function grasp_lists($comment, $args, $depth) {
-	$GLOBALS['comment'] = $comment;
-	?>
-	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'grasp' ); ?>>
-	<div class="comment-grasp vcard">
-			<?php echo '<a class="x7" href="'.get_comment_author_url().'" rel="external nofollow" >'. get_avatar( get_comment_author_email(), $args['avatar_size']).'</a>' ; ?>
-	</div>
-	<?php
 }

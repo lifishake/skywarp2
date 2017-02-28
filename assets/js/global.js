@@ -53,6 +53,10 @@
 		return /iPad|iPhone|iPod/.test(navigator.userAgent) && ! window.MSStream;
 	}
 
+	$(document).on('click', '.show-form', function() {
+		$('#author_info').toggle(300);
+	});
+
 	// Fire on document ready.
 	$( document ).ready( function() {
 
@@ -79,6 +83,10 @@
 			$('#svg-warnning').fadeOut(5000, function(){
 				$('#svg-warnning').addClass('hidden');
 			});
+		}
+
+		if ( $('#grasp').length > 0 ){
+			$('#author_info').toggle(10);
 		}
 
 	});

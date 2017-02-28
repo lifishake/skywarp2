@@ -35,11 +35,9 @@ if ( post_password_required() ) {
 
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-
 		<p class="no-comments"><?php echo( '评论已关闭' ); ?></p>
-	<?php endif;
+	<?php else:
 		get_template_part( 'template-parts/comment/input', 'fields' );
-	//comment_form();
-	?>
+	endif; ?>
 
 </div><!-- #comments -->
