@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying posts
+ * 显示单独文章
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *

@@ -5,7 +5,7 @@ Theme URI: http:pewae.com
 Author: 大致
 Author URI: http:pewae.com
 Description: Skywrap2基于wordpress官方主题修改。本主题追求简单快捷舒适，仅适用于中文用户。
-Version: 0.81
+Version: 0.82
 GitHub Theme URI: lifishake/skywarp2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,7 +77,7 @@ html {
 body {
 	margin: 0;
 	background-color: #050505;
-	background-color: rgba(5,5,5,.9);
+	background-color: rgba(5,5,5,.95);
 }
 
 article,
@@ -354,6 +354,17 @@ template {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
+.assistive-text {
+    letter-spacing: 4px;
+    margin: 0;
+    opacity: 0.5;
+    text-align: center;
+    overflow: hidden;
+    width:100%;
+    z-index:-1;
+    clear:none;
+}
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -403,6 +414,8 @@ template {
 .site-content:after,
 .site-footer:before,
 .site-footer:after,
+.sidebar-inline:before,
+.sidebar-inline:after,
 .nav-links:before,
 .nav-links:after,
 .pagination:before,
@@ -427,6 +440,7 @@ template {
 .site-header:after,
 .site-content:after,
 .site-footer:after,
+.sidebar-inline:after,
 .nav-links:after,
 .pagination:after,
 .comment-author:after,
@@ -799,6 +813,7 @@ a:active {
 .entry-summary a,
 .widget a,
 .site-footer .widget-area a,
+.sidebar-inline .widget-column a,
 .posts-navigation a {
 	-webkit-box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
 	box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
@@ -826,7 +841,7 @@ a .nav-title,
 .widget .widget-title a,
 .widget ul li a,
 .site-footer .widget-area ul li a,
-.site-footer .widget-area ul li a,
+.sidebar-inline .widget-column ul li a,
 .blog .entry-meta a.post-edit-link,
 .archive .entry-meta a.post-edit-link,
 .search .entry-meta a.post-edit-link {
@@ -1842,8 +1857,19 @@ ol.comment-list  li.depth-1 {
 	padding:0.5em 0 1em 0;
 }
 
+.page ol.children li.comment.depth-2 {
+	background-color: rgba(45,45,45,.95);
+	color:#222;
+	margin-left: 5em;
+}
+
 .comment-body {
 	margin-left: 65px;
+}
+
+.page ol.children li.comment.depth-2 .comment-body {
+	margin-left: 10px;
+	line-height: 1.2;
 }
 
 .comment-author {
@@ -1957,6 +1983,52 @@ ol.comment-list li article{
     color: #e5e5e5;
 }
 
+/*-----------------
+  ajax-comment
+-----------------*/
+.butterBar{
+    margin-left:36%;
+    max-width:640px;
+    position:fixed;
+    text-align:center;
+    top:200px;
+    width:58%;
+    z-index:800;
+}
+.butterBar--center{
+    left:50%;
+    margin-left:-320px;
+}
+.butterBar-message{
+    background:rgba(160,160,160,0.97);
+    color:#222;
+    box-shadow:0 1px 1px rgba(0,0,0,0.25),0 0 1px rgba(0,0,0,0.35);
+    display:inline-block;
+    font-size:14px;
+    margin-bottom:0;
+    padding:12px 25px;
+}
+
+.sidebar-inline {
+	background-color: rgba(21,21,21,.95);
+	font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 1em;
+    border-top:#000 solid 1px;
+    border-bottom:#000 solid 1px;
+}
+
+.belt-widgets-left li,
+.belt-widgets-right li {
+	line-height: 1.5;
+	overflow: hidden;
+	position: relative;
+	max-width: 100%;
+	max-height: 20px;
+	text-overflow: ellipsis;
+	margin-bottom: 2px;
+}
+
 /*--------------------------------------------------------------
 15.0 Widgets
 --------------------------------------------------------------*/
@@ -1964,6 +2036,7 @@ ol.comment-list li article{
 	padding-bottom: 3em;
 }
 
+h2.sidebar-inline-title,
 h2.widget-title {
 	color: #222;
 	font-size: 13px;
@@ -2050,58 +2123,6 @@ h2.widget-title {
 	word-wrap: break-word;
 }
 
-/* RSS Widget */
-
-.widget_rss .widget-title .rsswidget:first-child {
-	float: right;
-}
-
-.widget_rss .widget-title .rsswidget:first-child:hover {
-	background-color: transparent;
-}
-
-.widget_rss .widget-title .rsswidget:first-child img {
-	display: block;
-}
-
-.widget_rss ul li {
-	padding: 2.125em 0;
-}
-
-.widget_rss ul li:first-child {
-	border-top: none;
-	padding-top: 0;
-}
-
-.widget_rss li .rsswidget {
-	font-size: 22px;
-	font-size: 1.375rem;
-	font-weight: 300;
-	line-height: 1.4;
-}
-
-.widget_rss .rss-date,
-.widget_rss li cite {
-	color: #767676;
-	display: block;
-	font-size: 10px;
-	font-size: 0.625rem;
-	font-style: normal;
-	font-weight: 800;
-	letter-spacing: 0.18em;
-	line-height: 1.5;
-	text-transform: uppercase;
-}
-
-.widget_rss .rss-date {
-	margin: 0.5em 0 1.5em;
-	padding: 0;
-}
-
-.widget_rss .rssSummary {
-	margin-bottom: 0.5em;
-}
-
 /* Contact Info Widget */
 
 .widget_contact_info .contact-map {
@@ -2114,14 +2135,6 @@ h2.widget-title {
 	font-size: 16px;
 	font-size: 1rem;
 	margin-bottom: 0;
-}
-
-/* Recent Comments */
-
-.widget_recent_comments table,
-.widget_recent_comments th,
-.widget_recent_comments td {
-	border: 0;
 }
 
 /* Recent Posts widget */
@@ -2955,7 +2968,8 @@ object {
 
 	/* Widgets */
 
-	h2.widget-title {
+	h2.widget-title,
+	h2.sidebar-inline-title {
 		font-size: 11px;
 		font-size: 0.6875rem;
 		margin-bottom: 2em;
@@ -2968,6 +2982,16 @@ object {
 		font-size: 0.875rem;
 		line-height: 1.6;
 		margin-top: 3em;
+	}
+
+	.sidebar-inline .widget-column.belt-widgets-left {
+		float: left;
+		width: 44%;
+	}
+
+	.sidebar-inline .widget-column.belt-widgets-right {
+		float: right;
+		width: 52%;
 	}
 
 	.site-footer .widget-column.footer-widget-1 {
@@ -3094,6 +3118,7 @@ object {
 	.comment-reply-link,
 	.pingback .edit-link,
 	.site-footer aside.widget-area,
+	.sidebar-inline .widget-column,
 	.site-info {
 		display: none !important;
 	}
@@ -3229,6 +3254,8 @@ span.license-cc a:hover,
 .widget a:hover,
 .site-footer .widget-area a:focus,
 .site-footer .widget-area a:hover,
+.sidebar-inline .widget-column a:focus,
+.sidebar-inline .widget-column a:hover,
 .posts-navigation a:focus,
 .posts-navigation a:hover,
 .comment-reply-link:focus,
@@ -3265,6 +3292,7 @@ span.license-cc a:hover,
 .entry-summary a,
 .widget a,
 .site-footer .widget-area a,
+.sidebar-inline .widget-column a,
 .posts-navigation a {
 	-webkit-box-shadow: inset 0 -1px 0 rgba(240, 240, 240, 1); /* Equivalant to #f0f0f0 */
 	box-shadow: inset 0 -1px 0 rgba(240, 240, 240, 1); /* Equivalant to #f0f0f0 */
@@ -3316,6 +3344,7 @@ body,
 .menu-toggle,
 .page .entry-title,
 .h2.widget-title,
+.h2.sidebar-inline-title,
 .mark {
 	color: #ddd;
 }
@@ -3370,7 +3399,7 @@ body,
 
 .site-content-contain,
 .navigation-top {
-	background: rgba(5,5,5,.9);
+	background: rgba(5,5,5,.95);
 }
 
 .main-navigation ul {

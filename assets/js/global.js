@@ -85,7 +85,7 @@
 			});
 		}
 
-		if ( $('#grasp').length > 0 ){
+		if ( $('.show-form').length > 0 ){
 			$('#author_info').toggle(10);
 		}
 

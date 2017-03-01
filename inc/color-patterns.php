@@ -40,6 +40,8 @@ a:active,
 .widget a:hover,
 .site-footer .widget-area a:focus,
 .site-footer .widget-area a:hover,
+.sidebar-inline .widget-column a:focus,
+.sidebar-inline .widget-column a:hover,
 .posts-navigation a:focus,
 .posts-navigation a:hover,
 .comment-reply-link:focus,
@@ -88,6 +90,7 @@ input[type="submit"],
 .page-title,
 .colors-custom.page .entry-title,
 .colors-custom h2.widget-title,
+h2.sidebar-inline-title,
 .colors-custom mark,
 .colors-custom .post-navigation a:focus .icon,
 .colors-custom .post-navigation a:hover .icon,
@@ -111,7 +114,7 @@ textarea:focus,
 }
 
 span.highlight,
-.colors-custom h2,
+h2,
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -239,7 +242,8 @@ textarea,
 .colors-custom .pagination,
 .colors-custom .comments-pagination,
 .colors-custom .entry-footer,
-.colors-custom .site-footer {
+.colors-custom .site-footer,
+.sidebar-inline .widget-column {
 	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #eee; */
 }
 
