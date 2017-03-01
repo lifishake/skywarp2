@@ -13,7 +13,6 @@
         $form_style = "style= ' background: #fff url(\"".$thumbnail_src." \") no-repeat center center ; background-size: 100%, auto;'";
     }
 ?>
-<?php comment_form_title( '您的评论', '与%s交流' ); ?>
 <small>
 <?php cancel_comment_reply_link( '取消回复' ); ?>
 </small>

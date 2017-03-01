@@ -1929,6 +1929,28 @@ ol.comment-list li article{
 	font-weight: 800;
 }
 
+.grasp-list {
+    position: relative;
+    top: -1.5em;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+li.senseless {
+    display: inline-table;
+}
+
+.comment-grasp .avatar {
+    border: 2px solid #333;
+    border-radius: 100%;
+    margin: 0 0.15em;
+    opacity: 0.5;
+}
+
+.comment-grasp .avatar:hover {
+    border-color: #777;
+    opacity: 1;
+}
+
 .comment-reply-link {
 	position: absolute;
     right: 0.5em;
@@ -2016,6 +2038,10 @@ ol.comment-list li article{
     padding: 1em;
     border-top:#000 solid 1px;
     border-bottom:#000 solid 1px;
+}
+
+.sidebar-inline ul {
+	margin-bottom: 0.5em;
 }
 
 .belt-widgets-left li,
@@ -2972,7 +2998,7 @@ object {
 	h2.sidebar-inline-title {
 		font-size: 11px;
 		font-size: 0.6875rem;
-		margin-bottom: 2em;
+		margin-bottom: 1em;
 	}
 
 	/* Footer */

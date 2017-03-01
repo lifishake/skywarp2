@@ -231,12 +231,18 @@ textarea,
 	color: hsl( ' . $hue . ', ' . $saturation . ', 76% );
 }
 
+.assistive-text {
+	color: hsl( ' . $hue . ', ' . $saturation . ', 13% ); /* base: #eee; */
+}
+
 .colors-custom pre,
 .colors-custom mark,
 .colors-custom ins {
 	background: hsl( ' . $hue . ', ' . $saturation . ', 7% ); /* base: #eee; */
 }
 
+.sidebar-inline,
+.grasp-list,
 .colors-custom .navigation-top,
 .colors-custom .main-navigation > div > ul,
 .colors-custom .pagination,
@@ -247,6 +253,8 @@ textarea,
 	border-top-color: hsl( ' . $hue . ', ' . $saturation . ', 27% ); /* base: #eee; */
 }
 
+.sidebar-inline,
+.grasp-list,
 ol.comment-list li article,
 .colors-custom .navigation-top,
 .colors-custom .main-navigation li,
