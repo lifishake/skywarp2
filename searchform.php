@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying search forms in Twenty Seventeen
+ * 搜索框模板
  *
  * @package WordPress
  * @subpackage SkyWarp2

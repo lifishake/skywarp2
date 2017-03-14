@@ -212,7 +212,7 @@ function skywarp2_time_link() {
  * 来源: 破袜子原创
  */
 function skywarp2_entry_meta(){
-	$has_edit_link = true;
+	$has_edit_link = false;
 	$all_meta = '';
 	$has_date = true;
 	$has_category = true;

@@ -5,7 +5,9 @@
 	var $body = $( 'body' ),
 		$navigation = $body.find( '.navigation-top' ),
 		$menuScrollUp = $body.find( '.menu-scroll-up' ),
-		navigationFixedClass = 'site-navigation-fixed';
+		isFrontPage = $body.hasClass( 'twentyseventeen-front-page' ) || $body.hasClass( 'home blog' ),
+		navigationFixedClass = 'site-navigation-fixed',
+		navigationHeight;
 
 	// Ensure the sticky navigation doesn't cover current focused links.
 	$( 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex], [contenteditable]', '.site-content-contain' ).filter( ':visible' ).focus( function() {
@@ -31,8 +33,16 @@
 
 		if ( $( window ).scrollTop() >= $('#content').offset().top ) {
 			$navigation.addClass( navigationFixedClass );
+			if ( isFrontPage ) {
+				$('.site-branding').css( 'margin-bottom', navigationHeight );
+			} else {
+				$('.custom-header').css( 'margin-bottom', navigationHeight );
+			}
+
 		} else {
 			$navigation.removeClass( navigationFixedClass );
+			$('.custom-header').css( 'margin-bottom', '0' );
+			$('.site-branding').css( 'margin-bottom', '0' );
 		}
 	}
 
@@ -62,6 +72,7 @@
 
 		// If navigation menu is present on page, setNavProps and adjustScrollClass.
 		if ( $navigation.length ) {
+			navigationHeight = $navigation.height();
 			adjustScrollClass();
 		}
 
@@ -76,7 +87,7 @@
 				});
 			});
 		}
-
+		
 		if ( true !== supportsInlineSVG() ) {
 			document.documentElement.className = document.documentElement.className.replace( /(\s*)svg(\s*)/, '$1no-svg$2' );
 			$('#svg-warnning').removeClass('hidden');
@@ -101,6 +112,7 @@
 
 		// Also want to make sure the navigation is where it should be on resize.
 		$( window ).resize( function() {
+			navigationHeight = $navigation.height();
 			setTimeout( adjustScrollClass, 500 );
 		});
 	}

@@ -5,7 +5,7 @@ Theme URI: http:pewae.com
 Author: 大致
 Author URI: http:pewae.com
 Description: Skywrap2基于wordpress官方主题修改。本主题追求简单快捷舒适，仅适用于中文用户。
-Version: 0.82
+Version: 1.00
 GitHub Theme URI: lifishake/skywarp2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -158,7 +158,7 @@ dfn {
 }
 
 mark {
-	background-color: #e5e5e5;
+	background-color: #aaa;
 	color: #050505;
 }
 
@@ -544,13 +544,14 @@ i {
 
 blockquote {
 	color: #666;
-	font-size: 18px;
-	font-size: 1.125rem;
+	font-size: 12px;
+	font-size: 0.925rem;
 	font-style: italic;
 	line-height: 1.7;
 	margin: 0;
 	overflow: hidden;
 	padding: 0;
+	border-left: 3px double #666;
 }
 
 blockquote cite {
@@ -1501,9 +1502,16 @@ body .entry-header {
     color: #aaa;
     display: inline-block;
     font-weight: 700;
-    line-height: unset;
+    line-height: inherit;
     padding: 0.25em 2.5em 0.25em 1.5em;
     text-shadow: 1px -1px 3px #777;
+}
+
+.page-id-3819 .entry-content ul,
+.page-id-3819 .entry-content ol {
+    border-bottom: none;
+    text-shadow: none;
+    display: inherit;
 }
 
 .entry-content .more-link:before {
@@ -1655,17 +1663,6 @@ span.license-cc a:first-child {
 	padding: 1em 0;
 }
 
-.nav-subtitle {
-	background: transparent;
-	color: #767676;
-	display: block;
-	font-size: 11px;
-	font-size: 0.6875rem;
-	letter-spacing: 0.1818em;
-	margin-bottom: 1em;
-	text-transform: uppercase;
-}
-
 .nav-title {
 	font-size: 15px;
 	font-size: 0.9375rem;
@@ -1814,6 +1811,8 @@ span.highlight {
 	background-color: #e5e5e5;
 }
 
+
+
 span.warnning {
 	color: #ff0000;
     display: block;
@@ -1860,7 +1859,7 @@ ol.comment-list  li.depth-1 {
 .page ol.children li.comment.depth-2 {
 	background-color: rgba(45,45,45,.95);
 	color:#222;
-	margin-left: 5em;
+	margin-left: 2.5em;
 }
 
 .comment-body {
@@ -1921,12 +1920,17 @@ ol.comment-list li article{
 }
 
 .comment-content {
-	display: inline-flex;
+	display: inline-block;
 }
 
 .comment-content .mention {
 	padding-right: 0.5em;
 	font-weight: 800;
+	display: flex;
+}
+
+.comment-content p:last-child {
+	margin-bottom: 0.5em;
 }
 
 .grasp-list {
@@ -1969,6 +1973,11 @@ li.senseless {
 
 .bypostauthor > .comment-body .comment-meta > .author-url {
 	text-shadow: 0px 1px 2px #FFF;
+}
+
+.bypostauthor .author-url,
+.bypostauthor .author-url a {
+    color: #050505;
 }
 
 .no-comments,
@@ -2189,57 +2198,6 @@ h2.widget-title {
 	width: 24px;
 }
 
-/* Tag cloud widget */
-
-.tagcloud,
-.widget_tag_cloud,
-.wp_widget_tag_cloud {
-	line-height: 1.5;
-}
-
-.widget .tagcloud a,
-.widget.widget_tag_cloud a,
-.wp_widget_tag_cloud a {
-	border: 1px solid #ddd;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	display: inline-block;
-	float: left;
-	font-size: 14px !important; /* !important to overwrite inline styles */
-	font-size: 0.875rem !important;
-	margin: 4px 4px 0 0 !important;
-	padding: 4px 10px 5px !important;
-	position: relative;
-	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	width: auto;
-	word-wrap: break-word;
-	z-index: 0;
-}
-
-.widget .tagcloud a:hover,
-.widget .tagcloud a:focus,
-.widget.widget_tag_cloud a:hover,
-.widget.widget_tag_cloud a:focus,
-.wp_widget_tag_cloud a:hover,
-.wp_widget_tag_cloud a:focus {
-	border-color: #bbb;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	text-decoration: none;
-}
-
-/* Calendar widget */
-
-.widget_calendar th,
-.widget_calendar td {
-	text-align: center;
-}
-
-.widget_calendar tfoot td {
-	border: 0;
-}
-
 /*--------------------------------------------------------------
 16.0 Media
 --------------------------------------------------------------*/
@@ -2399,7 +2357,7 @@ object {
 		background-color: rgba(5, 5, 5, 0.95);
 	}
 	.admin-bar .site-navigation-fixed.navigation-top {
-		top: 32px;
+		top: 0;
 	}
 }
 
@@ -2509,7 +2467,7 @@ object {
 	select,
 	textarea {
 		font-size: 16px;
-		font-size: 1rem;
+		font-size: 1.125rem;
 		line-height: 1.5;
 	}
 
@@ -3012,12 +2970,12 @@ object {
 
 	.sidebar-inline .widget-column.belt-widgets-left {
 		float: left;
-		width: 44%;
+		width: 50%;
 	}
 
 	.sidebar-inline .widget-column.belt-widgets-right {
 		float: right;
-		width: 52%;
+		width: 49%;
 	}
 
 	.site-footer .widget-column.footer-widget-1 {
@@ -3340,7 +3298,7 @@ body,
 .format-quote blockquote,
 .nav-title,
 .comment-body {
-	color: #e5e5e5;
+	color: #c0c0c0;
 }
 
 /* Placeholder text color -- selectors need to be separate to work. */
@@ -3393,7 +3351,6 @@ body,
 
 .h5,
 .main-navigation a:hover,
-.nav-subtitle,
 .no-comments,
 .comment-awaiting-moderation,
 .page-numbers.current,

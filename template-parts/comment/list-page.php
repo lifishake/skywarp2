@@ -19,7 +19,6 @@ if ( post_password_required() ) {
             'type'=>'comment',
             'reverse_top_level'=>true,
             'max_depth'=>2,
-            'per_page'=>999,
             'callback'=>'skywarp_page_comment',
         );
         wp_list_comments( $arg_list );

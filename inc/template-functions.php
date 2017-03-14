@@ -30,9 +30,6 @@ function sw2_body_classes( $classes ) {
 			$classes[] = 'page-one-column';
 	}
 
-	// Get the colorscheme or the default if there isn't one.
-	$classes[] = 'colors-custom';
-
 	return $classes;
 }
 add_filter( 'body_class', 'sw2_body_classes' );
