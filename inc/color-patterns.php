@@ -144,7 +144,7 @@ h5,
 	color: hsl( ' . $hue . ', ' . $saturation . ', 54% ); /* base: #767676; */
 }
 
-.bypostauthor .author-url {
+li.bypostauthor > article > footer > div.comment-metadata > b.author-url {
     text-shadow: 0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% ),0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% ),0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% ),0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% ),0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% ),0px 0px 1px hsl( ' . $hue . ', ' . $saturation . ', 54% );
 }
 

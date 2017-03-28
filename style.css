@@ -5,7 +5,7 @@ Theme URI: http:pewae.com
 Author: 大致
 Author URI: http:pewae.com
 Description: Skywrap2基于wordpress官方主题修改。本主题追求简单快捷舒适，仅适用于中文用户。
-Version: 1.00
+Version: 1.01
 GitHub Theme URI: lifishake/skywarp2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1879,6 +1879,77 @@ ol.comment-list  li.depth-1 {
 	z-index: 2;
 }
 
+
+
+@-webkit-keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    } 
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+
+
 .comment-author .avatar {
 	border: 3px solid #333;
 	border-radius: 100%;
@@ -1888,6 +1959,15 @@ ol.comment-list  li.depth-1 {
 	left: -65px;
 	position: absolute;
 	width: 50px;
+	opacity: 0.5;
+}
+
+.comment-author .avatar:hover {
+	opacity: 1;
+	-webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
 }
 
 .comment-meta {
@@ -1975,8 +2055,8 @@ li.senseless {
 	text-shadow: 0px 1px 2px #FFF;
 }
 
-.bypostauthor .author-url,
-.bypostauthor .author-url a {
+li.bypostauthor > article > footer > div.comment-metadata > b.author-url,
+li.bypostauthor > article > footer > div.comment-metadata > b.author-url a {
     color: #050505;
 }
 
