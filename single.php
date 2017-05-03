@@ -26,8 +26,8 @@ get_header(); ?>
 					if ( comments_open() || get_comments_number() ) :
 						comments_template();
 					endif;
-                    if ( function_exists('apip_get_post_navagation') ) {
-                        <?php apip_get_post_navagation(array('prev_text'=>'<<span class="nav-title"><span class="nav-title-icon-wrapper">' . sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>','next_text'=>'<span class="nav-title">%title<span class="nav-title-icon-wrapper">' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>','screen_reader_text'=>'文章导航')); ?>
+                    if ( function_exists('apip_get_post_navagation') ){
+                        apip_get_post_navagation(array('prev_text'=>'<span class="nav-title"><span class="nav-title-icon-wrapper">' . sw2_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>','next_text'=>'<span class="nav-title">%title<span class="nav-title-icon-wrapper">' . sw2_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>','screen_reader_text'=>'文章导航'));
                     }
                     else {
 					the_post_navigation( array(
